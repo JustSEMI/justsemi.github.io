@@ -1,0 +1,99 @@
+body {
+    background: url('asset/foto_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+/*NAVBAR*/
+header {
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.navbar {
+    background-color: #242424;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+    padding-right: 50px;
+    color: #fff;
+}
+.namaweb a {
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+.listnav {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.clock {
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+/*NAVBAR END*/
+
+/*BODY*/
+.container {
+    margin-left: 50px;
+}
+
+.welcome {
+    font-weight: bold;
+    font-size: 75px;
+    max-width: 500px;
+    font-weight: bold;
+    letter-spacing: .30rem;
+    margin-bottom: 50px;
+    color: white;
+}
+
+.info {
+    font-size: 25px;
+    max-width: 600px;
+    line-height: 1.5;
+    color: white;
+    padding: 10px 10px 10px 10px;
+    margin-top: 75px;
+}
+
+.container2 {
+    background-color: #232222;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-top: 250px;
+}
+
+.about {
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: black;
+    max-width: 500px;
+    margin-left: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/*BODY END*/
+
+/*FOOTER*/
+footer {
+    background-color: #242424;
+    font-family: Arial, sans-serif;
+    font-size: .55rem;
+    letter-spacing: .20rem;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    font-weight: 500;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+/*FOOTER END*/
