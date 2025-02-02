@@ -13,12 +13,19 @@ header {
     padding: 1px 55px;
     background: #1e1e1e;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 header h1 {
     font-size: 24px;
     color: white;
 }
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -37,6 +44,68 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #00ADB5;
+}
+
+/* HAMBURGER MENU*/
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 10;
+}
+
+.menu-toggle div {
+    width: 35px;
+    height: 4px;
+    background: white;
+    margin: 6px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.menu-toggle.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: rgba(30, 30, 30, 0.95);
+        width: 200px;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease-in-out;
+        text-align: center;
+    }
+    nav ul.active {
+        display: flex;
+    }
+    nav ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    nav ul li:last-child {
+        border-bottom: none;
+    }
 }
 /*NAVBAR END*/
 
