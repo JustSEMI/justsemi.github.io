@@ -1,54 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>z3kk1ng</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Web</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    </head>
 <body>
-    <header>
-        <h1>Home</h1>
-        <div class="menu-toggle">
-            <div></div>
-            <div></div>
-            <div></div>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">zEkkInG</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Project</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="home-content">
+            <h1>Hi, I'm <span>Samuel</span></h1>
+            <p>Selamat datang di Personal Website saya.</p>
+            <a href="#about" class="btn">Learn More</a>
         </div>
-        <nav>
-            <ul class="navbar-menu">
-                <li><a href="project.html">Project</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="welcome">
-        <div>
-            <h2>Selamat Datang di WebPage saya</h2>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>Tentang Saya</h2>
+        <div class="about-content">
+            <img src="assets/profil.jpg" alt="Your Photo">
             <p>Perkenalkan saya seorang siswa SMA yang sedang mengejar mimpi besar!. Hobi saya adalah bermain game, mendengarkan musik, dan mengeksplorasi hal-hal baru. Saya percaya bahwa setiap langkah kecil membawa kita lebih dekat ke tujuan besar.</p>
         </div>
-    </div>
-    <div class="container2">
-        <div class="Portfolio">
-            <h1>Project</h1>
-            <p>Di sini, kalian dapat melihat berbagai proyek yang saya miliki, mulai dari yang telah selesai hingga yang masih dalam proses pengerjaan. Setiap proyek ini merupakan hasil kreativitas saya, yang terus berkembang seiring waktu.</p>
-            <a href="project.html" target="_blank">project</a>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2>Project</h2>
+        <p class="ket-project">Di sini, kalian dapat melihat berbagai proyek yang saya miliki, mulai dari yang telah selesai hingga yang masih dalam proses pengerjaan. Setiap proyek ini merupakan hasil kreativitas saya, yang terus berkembang seiring waktu.</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="assets/gbkreborn.png">
+                <h3>GBK REBORN</h3>
+                <p>Minecraft server yang di mana tidak memiliki Rules, yang masih dalam tahap pengembangan ide untuk Minecraft Server ini.</p>
+                <p>( Type Anarchy server )</p>
+            </div>
+            <div class="portfolio-item">
+                <img src="assets/project2.jpg" alt="BELUM KEPIKIRAN">
+                <h3>BELUM KEPIKIRAN</h3>
+                <p>BELUM KEPIKIRAN</p>
+            </div>
         </div>
-    </div>
-    <div class="container3">
-        <div class="contact">
-            <p>Get in touch:</p>
-            <a href="smuel.fht@gmail.com">smuel.fht@gmail.com</a>
-            <a href="https://www.instagram.com/semii.fht" target="_blank">Instagram</a>
-            <a href="https://github.com/JustSEMI" target="_blank">GitHub</a>
-        </div>
-    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Feel free to reach out to me via email or social media.</p>
+        <a href="#" class="btn">smuel.fht@gmail.com</a>
+        <a href="https://github.com/JustSEMI" target="_blank" class="btn">GitHub</a>
+        <a href="https://discord.gg/c7sKZExxcG" target="_blank" class="btn">Discord</a>
+        <a href="https://www.instagram.com/semii.fht/" target="_blank" class="btn">Instagram</a>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2023 - 2025. All Rights Reserved.</p>
-            <p>Di buat dengan sepenuh hati ;3</p>
-        </div>
+        <p>&copy; 2025. All rights reserved.</p>
+        <p>Di buat dengan sepenuh hati ;3</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

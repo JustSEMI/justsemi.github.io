@@ -1,187 +1,179 @@
+/* General Styles */
 body {
-    background-size: cover;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text for contrast */
 }
 
-/*NAVBAR*/
-header {
+/* Navbar */
+nav {
+    background: #1f1f1f; /* Darker navbar */
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1px 55px;
-    background: #1e1e1e;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-header h1 {
-    font-size: 24px;
-    color: white;
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #007BFF; /* Blue logo for a pop of color */
 }
 
-nav {
-    display: flex;
-    align-items: center;
-}
-
-nav ul {
+.nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 1.5rem;
 }
 
-nav ul li {
-    cursor: pointer;
-}
-
-nav ul li a {
+.nav-links a {
     text-decoration: none;
-    color: #f0f0f0;
+    color: #e0e0e0; /* Light text */
+    font-weight: 500;
     transition: color 0.3s;
 }
 
-nav ul li a:hover {
-    color: #00ADB5;
+.nav-links a:hover {
+    color: #007BFF; /* Blue hover effect */
 }
 
-/* HAMBURGER MENU*/
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    z-index: 10;
-}
-
-.menu-toggle div {
-    width: 35px;
-    height: 4px;
-    background: white;
-    margin: 6px 0;
-    border-radius: 2px;
-    transition: 0.3s;
-}
-
-.menu-toggle.active div:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menu-toggle.active div:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.active div:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
-    nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 10px;
-        background: rgba(30, 30, 30, 0.95);
-        width: 200px;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease-in-out;
-        text-align: center;
-    }
-    nav ul.active {
-        display: flex;
-    }
-    nav ul li {
-        padding: 10px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    nav ul li:last-child {
-        border-bottom: none;
-    }
-}
-/*NAVBAR END*/
-
-/*BODY*/
-.welcome {
-    height: 90vh;
+/* Home Section */
+#home {
+    height: 100vh;
+    background: url('assets/foto_background.jpg') no-repeat center center/cover;
+    background-blend-mode: multiply; /* Darken the background image */
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    background: url('asset/foto_background.jpg') no-repeat center/cover;
-}
-.welcome h2 {
-    color: #f0f0f0;
-    font-size: 3em;
-    margin-bottom: 10px;
+    color: #fff;
 }
 
-.welcome p {
-    font-size: 1.2em;
-    max-width: 600px;
-    margin-left: 75px;
-    text-align: center;
-    color: whitesmoke;
+.home-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
 }
 
-.container2 {
-    background-color: #121212;
-    padding-top: 100px;
-    padding-bottom: 100px;
+.home-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #e0e0e0;
 }
 
-.Portfolio {
-    margin-top: 50px;
-    padding: 20px;
-    background-color: #1e1e1e;
-    color: whitesmoke;
-    max-width: 500px;
-    margin-left: 100px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.Portfolio a {
+.btn {
+    background: #007BFF;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px; /* Fixed border-radius value */
     text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s;
+    display: block; /* Ensure buttons stack vertically */
+    margin: 0.5rem auto; /* Center align buttons */
+    width: fit-content; /* Adjust width to content */
 }
 
-.container3 {
-    background-color: #121212;
-    padding: 60px 50px;
+.btn:hover {
+    background: #0056b3;
 }
 
-.contact {
+/* About Section */
+#about {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #1f1f1f; /* Darker section background */
+}
+
+.about-content {
     display: flex;
-    color: whitesmoke;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 1.5rem;
 }
 
-.contact p {
-    font-size: 18px;
+.about-content img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.contact a {
-    text-decoration: none;
-    color: whitesmoke;
-    font-size: 1.1em;
-    transition: color 0.3s;
+.about-content p {
+    max-width: 600px;
+    font-size: 1.1rem;
+    color: #e0e0e0;
 }
 
-.contact a:hover {
-    color: #00ADB5;
+/* Portfolio Section */
+#portfolio {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #121212;
 }
-/*BODY END*/
 
-/*FOOTER*/
+.ket-project {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    margin-bottom: 3rem; /* Add some spacing below the description */
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.portfolio-item {
+    background: #1f1f1f;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+}
+
+.portfolio-item img {
+    width: 25%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 1rem;
+}
+
+.portfolio-item h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-item p {
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+/* Contact Section */
+#contact {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #1f1f1f;
+}
+
+/* Footer */
 footer {
     background-color: #242424;
     font-family: Arial, sans-serif;
@@ -194,4 +186,3 @@ footer {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
 }
-/*FOOTER END*/
