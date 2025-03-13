@@ -1,0 +1,155 @@
+body {
+    background-color: #121212;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #e0e0e0;
+    cursor: default;
+}
+
+/*Home*/
+#home {
+    height: 100vh;
+    background: url('assets/foto_background.jpg') no-repeat center center/cover;
+    background-blend-mode: multiply;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.typing {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+#cursor {
+    animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0; }
+}
+
+
+.home-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.home-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #e0e0e0;
+}
+
+.btn-tampilan-awal {
+    background: #007BFF;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s;
+    display: block;
+    margin: 0.5rem auto;
+    width: fit-content;
+}
+
+.btn-tampilan-awal:hover {
+    background: #0056b3;
+}
+
+/*Tentang*/
+#aboutserver {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #1f1f1f;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.about-content p {
+    max-width: 700px;
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+/*Update*/
+#updateserver {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.update-list {
+    gap: 1.5rem;
+}
+
+.update-list ul {
+    display: flex;
+    margin-top: 45px;
+    margin-left: 200px;
+    margin-right: 200px;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.update-list ul li {
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    animation: ListUpdate linear forwards;
+    animation-timeline: view();
+}
+
+.update-list ul li p {
+    font-size: 1rem;
+}
+
+@keyframes ListUpdate {
+    0% {
+        opacity: 0;
+        transform: scale(.8);
+    }
+
+    20% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    80% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(.8);
+    }
+}
+
+/*Footer*/
+footer {
+    background-color: #242424;
+    font-family: Arial, sans-serif;
+    font-size: .55rem;
+    letter-spacing: .20rem;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    font-weight: 500;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}

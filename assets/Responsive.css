@@ -1,0 +1,86 @@
+@media screen and (max-width: 768px) {
+    #home {
+        height: 80vh;
+        padding: 2rem;
+        background-size: cover;
+    }
+
+    .home-content h1 {
+        font-size: 2rem;
+    }
+
+    .home-content p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* About Section */
+    .about-content img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .about-content p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    /* Portfolio */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ket-project {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 1rem;
+    }
+
+    .portfolio-item img {
+        width: 80%;
+    }
+
+    /* Kontak */
+    .kontak-icons a {
+        font-size: 30px;
+    }
+
+    /* Footer */
+    footer {
+        font-size: 0.8rem;
+        padding: 15px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .home-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .home-content p {
+        font-size: 1.1rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .portfolio-item img {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
