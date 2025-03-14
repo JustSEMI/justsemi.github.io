@@ -1,4 +1,4 @@
-const texts = ["GBK REBORN", "Dunia yang Terpecah", "🌟 Petualangan tak terbatas menantimu! 🌟"];
+const texts = ["GBK REBORN", "Tanah yang satu", "Dunia yang Terpecah"];
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
