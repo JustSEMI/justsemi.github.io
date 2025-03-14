@@ -97,8 +97,8 @@ body {
 .update-list ul {
     display: flex;
     margin-top: 45px;
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: 20rem;
+    margin-right: 20rem;
     flex-direction: column;
     gap: 20px;
     list-style: none;
@@ -109,7 +109,7 @@ body {
     background-color: #1f1f1f;
     padding: 10px 20px;
     font-size: 1.2rem;
-    border-radius: 12px;
+    border-radius: 20px;
     animation: ListUpdate linear forwards;
     animation-timeline: view();
 }
