@@ -5,13 +5,13 @@ let isDeleting = false;
 
 function typeEffect() {
     let currentText = texts[textIndex].substring(0, charIndex);
-    document.getElementById("text").innerText = currentText;
+    document.getElementById("home-tulisan").innerText = currentText;
 
     if (!isDeleting) {
         charIndex++;
         if (charIndex > texts[textIndex].length) {
             isDeleting = true;
-            setTimeout(typeEffect, 5000);
+            setTimeout(typeEffect, 2000);
             return;
         }
     } else {

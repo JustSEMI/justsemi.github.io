@@ -1,88 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SEMIII</title>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="assets/Responsive.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+    <title>SEMIII</title>
+</head>
 <body>
-    <!-- Navbar -->
-    <link rel="stylesheet" href="assets/Navbar.css">
     <nav>
-        <div class="nav-text">BlueZex</div>
-        <ul class="nav-links">
-            <li class="nav-home"><a href="#home">Home</a></li>
-            <li class="nav-about"><a href="#about">About</a></li>
-            <li class="nav-project"><a href="#portfolio">Project</a></li>
-            <li class="nav-contact"><a href="#contact">Contact</a></li>
+        <h1 class="nav-judul">SEMIII</h1>
+        <ul class="nav">
+            <li class="nav-home"><a href="#tentang">About</a></li>
+            <li class="nav-tentang"><a href="#project">Project</a></li>
+            <li class="nav-project"><a href="#kontak">Contact</a></li>
+            <li class="nav-kontak"><a href="#galeri">Gallery</a></li>
         </ul>
     </nav>
-
-    <!-- Tampilan Awal -->
-    <section id="home">
-        <div class="home-content">
-            <div class="typing"><span id="text"></span><span id="cursor">|</span></div>
-            <p>Selamat datang di Personal Website saya.</p>
-            <a href="#about" class="btn-tampilan-awal">Learn More</a>
-        </div>
-    </section>
-
-    <!-- Tentang -->
-    <section id="about">
-        <h2>Tentang Saya</h2>
-        <div class="about-content">
-            <img src="assets/profil.jpg" alt="Your Photo">
-            <p>Perkenalkan saya seorang siswa SMA yang sedang mengejar mimpi besar!. Hobi saya adalah bermain game, mendengarkan musik, dan mengeksplorasi hal-hal baru. Saya percaya bahwa setiap langkah kecil membawa kita lebih dekat ke tujuan besar.</p>
-        </div>
-    </section>
-
-    <!-- Portfolio -->
-    <section id="portfolio">
-        <h2>Project</h2>
-        <p class="ket-project">Di sini, kalian dapat melihat berbagai proyek yang saya miliki, mulai dari yang telah selesai hingga yang masih dalam proses pengerjaan. Setiap proyek ini merupakan hasil kreativitas saya, yang terus berkembang seiring waktu.</p>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="assets/gbkreborn.png">
-                <h3>PROJECT GBK REBORN</h3>
-                <p>Project GBK REBORN akan di jadikan Private dan tidak akan di Public.</p>
-                <a href="gbkreborn.html" class="btn-project">More Info</a>
+    <main>
+        <section id="home">
+            <div class="home">
+                <div class="home-typing"><span id="home-tulisan"></span><span id="cursor">|</span></div>
+                <p>Selamat datang di Personal Website Saya</p>
+            <a href="#tentang" class="home-btn">Lear More</a>
             </div>
-            <div class="portfolio-item">
-                <img src="assets/project2.jpg" alt="BELUM KEPIKIRAN">
-                <h3>BELUM KEPIKIRAN</h3>
-                <p>BELUM KEPIKIRAN</p>
-                <a href="#portfolio" class="btn-project">More Info</a>
+        </section>
+        <section id="tentang">
+            <h2>ABOUT ME</h2>
+            <div class="tentang-isi">
+                <img src="img/profil.jpg" alt="FOTO-SAYA" loading="lazy">
+                <p>Perkenalkan saya seorang siswa SMA yang sedang mengejar mimpi besar!. Hobi saya adalah bermain game, mendengarkan musik, dan mengeksplorasi hal-hal baru. Saya percaya bahwa setiap langkah kecil membawa kita lebih dekat ke tujuan besar.</p>
             </div>
-            <div class="portfolio-item">
-                <img src="assets/project2.jpg" alt="BELUM KEPIKIRAN">
-                <h3>BELUM KEPIKIRAN</h3>
-                <p>BELUM KEPIKIRAN</p>
-                <a href="#portfolio" class="btn-project">More Info</a>
+        </section>
+        <section id="project">
+            <h2>PROJECT</h2>
+            <p class="project-keterangan">Di sini, kalian dapat melihat berbagai proyek yang saya miliki, mulai dari yang telah selesai hingga yang masih dalam proses pengerjaan. Setiap proyek ini merupakan hasil kreativitas saya, yang terus berkembang seiring waktu.</p>
+            <div class="project-posisi">
+                <div class="project-list">
+                    <img src="img/gbkreborn.png" alt="GBK REBORN" loading="lazy">
+                    <h2> PROJECT GBK REBORN</h2>
+                    <p>Project GBK REBORN akan di jadikan Private Project.</p>
+                    <a href="gbkreborn.html" class="project-btn">More Info</a>
+                </div>
+                <div class="project-list">
+                    <img src="" alt="BELUM KEPIKIRAN" loading="lazy">
+                    <h2>GBK REBORN</h2>
+                    <p>KETERANGAN PROJECT</p>
+                    <a href="#project" class="project-btn">More Info</a>
+                </div>
+                <div class="project-list">
+                    <img src="" alt="BELUM KEPIKIRAN" loading="lazy">
+                    <h2>GBK REBORN</h2>
+                    <p>KETERANGAN PROJECT</p>
+                    <a href="#project" class="project-btn">More Info</a>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Kontak -->
-    <section id="kontak">
-        <h2>Contact</h2>
-        <p>Feel free to reach out to me via email or social media.</p>
-        <div class="kontak-icons">
-            <a href="https://github.com/JustSEMI" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="#home" target="_blank"><i class="fab fa-discord"></i></a>
-            <a href="https://www.instagram.com/semii.fht/" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-    </section>
-
-    <!-- Footer -->
+        </section>
+        <section id="galeri">
+            <h2>GALLERY</h2>
+            <p class="galeri-keterangan">Lihat dan Perhatikan</p>
+            <div class="galeri-posisi">
+                <div class="galeri-list">
+                    <iframe src="https://www.youtube.com/embed/wxHk1JKFin0?si=YTw7joZRE7388qmw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="galeri-list">
+                    <iframe src="https://www.youtube.com/embed/wxHk1JKFin0?si=YTw7joZRE7388qmw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="galeri-list">
+                    <iframe src="https://www.youtube.com/embed/wxHk1JKFin0?si=YTw7joZRE7388qmw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <section id="kontak">
+            <h2>CONTACT</h2>
+            <p>Feel free to reach out me via social media.</p>
+            <div class="kontak-ikon">
+                <a href="" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="" target="_blank"><i class="fab fa-discord"></i></a>
+                <a href="" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </section>
+    </main>
     <footer>
-        <p>&copy; 2025. All rights reserved.</p>
-        <p>Di buat dengan sepenuh hati ;3</p>
+        <p>&copy; 2025. All right reserved</p>
+        <p>dibuat dengan sepenuh hati ;3</p>
     </footer>
     <script src="script.js"></script>
 </body>

@@ -1,0 +1,26 @@
+@media screen and (max-width: 768px) {
+    nav{
+        padding: 0.25rem 1rem;
+    }
+    .nav-judul {
+        font-size: 0.8rem;
+    }
+    .nav {
+        gap: 1rem;
+
+    }
+    .nav a {
+        font-size: 0.6rem;
+    }
+
+    .home-typing {
+        font-size: 1.5rem;
+    }
+    .home p {
+        font-size: 0.6rem;
+    }
+    .home-btn {
+        padding: 0.25rem 1rem;
+        font-size: 0.8rem;
+    }
+}
