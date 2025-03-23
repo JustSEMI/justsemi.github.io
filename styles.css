@@ -7,6 +7,7 @@ body {
     cursor: default;
 }
 
+/* INDEX.HTML */
 nav {
     background: #1f1f1f;
     top: 0;
@@ -165,7 +166,6 @@ nav {
     transform: scale(0.95);
 }
 
-/* GALLERY */
 #galeri {
     padding: 4rem 2rem;
     text-align: center;
@@ -195,7 +195,6 @@ nav {
     width: 560px;
     height: 315px;
 }
-/* GALLERY */
 
 #kontak {
    padding: 4rem 2rem;
@@ -225,3 +224,39 @@ footer {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
 }
+/* INDEX.HTML */
+
+/* GBKREBORN.HTML */
+.body-gbkrebron {
+    overflow: hidden;
+}
+main {
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+main img {
+    margin: 2rem 2rem;
+    width: 10%;
+    border-radius: 15px;
+}
+.informasi-gbk {
+    margin-bottom: 2rem;
+}
+.home-gbk-btn {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    background-color: #007bff;
+    border-radius: 5px;
+    display: block;
+    margin: 0.5rem auto;
+    padding: 0.5rem 2rem;
+    width: fit-content;
+    transition: 0.5s;
+}
+.home-gbk-btn:hover {
+    background: #0056b3;
+    transform: scale(0.95);
+}
+/* GBKREBORN.HTML */
