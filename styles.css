@@ -80,6 +80,7 @@ nav {
 }
 .home-btn:hover {
     background: #0056b3;
+    transform: scale(0.95);
 }
 
 #tentang {
@@ -161,6 +162,7 @@ nav {
 }
 .project-btn:hover {
     background: #0056b3;
+    transform: scale(0.95);
 }
 
 /* GALLERY */
