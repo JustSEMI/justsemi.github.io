@@ -227,15 +227,15 @@ footer {
 /* INDEX.HTML */
 
 /* GBKREBORN.HTML */
-.body-gbkrebron {
+.body-gbk {
     overflow: hidden;
 }
-main {
+.main-gbk {
     padding: 4rem 2rem;
     text-align: center;
     margin-bottom: 3.5rem;
 }
-main img {
+.main-gbk img {
     margin: 2rem 2rem;
     width: 10%;
     border-radius: 15px;
