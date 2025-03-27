@@ -1,4 +1,5 @@
 @media screen and (max-width: 768px) {
+    /* INDEX.HTML */
     nav{
         padding: 0.25rem 1rem;
     }
@@ -36,7 +37,7 @@
         font-size: .8rem;
     }
     .galeri-posisi {
-        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     }
     .galeri-posisi iframe {
         width: 90%;
@@ -46,4 +47,11 @@
     #kontak p {
         font-size: .8rem;
     }
+    /* INDEX.HTML */
+
+    /* GBKREBORN.HTML */
+    .main-gbk img {
+        width: 50%;
+    }
+    /* GBKREBORN.HTML */
 }
