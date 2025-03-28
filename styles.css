@@ -166,36 +166,6 @@ nav {
     transform: scale(0.95);
 }
 
-#galeri {
-    padding: 4rem 2rem;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-.galeri-keterangan {
-    max-width: 50rem ;
-    margin: auto;
-    font-size: 1.1rem;
-    color: #e0e0e0;
-    margin-bottom: 2rem;
-}
-.galeri-posisi {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
-    gap: 2rem;
-}
-.galeri-list {
-    background: #1f1f1f;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-.galeri-list iframe {
-    margin: 0.5rem;
-    border-radius: 15px;
-    width: 560px;
-    height: 315px;
-}
-
 #kontak {
    padding: 4rem 2rem;
    text-align: center;

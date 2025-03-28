@@ -32,17 +32,6 @@
     .project-keterangan {
         font-size: .8rem;
     }
-    
-    .galeri-keterangan {
-        font-size: .8rem;
-    }
-    .galeri-posisi {
-        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    }
-    .galeri-posisi iframe {
-        width: 90%;
-        height: auto;
-    }
 
     #kontak p {
         font-size: .8rem;
