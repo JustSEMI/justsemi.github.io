@@ -153,8 +153,8 @@ nav {
 .project-btn {
     color: #fff;
     background: #007bff;
-    padding: 0.5rem 1.5rem;
-    margin: auto;
+    padding: .5rem 1.5rem;
+    margin: .1rem auto;
     border-radius: 5px;
     display: block;
     text-decoration: none;
