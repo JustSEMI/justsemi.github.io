@@ -13,6 +13,9 @@
         font-size: .7rem;
     }
 
+    #home {
+        height: 90vh;
+    }
     .home-typing {
         font-size: 2.5rem;
     }
