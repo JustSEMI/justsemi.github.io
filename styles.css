@@ -45,6 +45,7 @@ nav {
 }
 
 #home {
+    background: url('img/foto_background.jpg') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     color: #fff;
