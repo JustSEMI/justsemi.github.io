@@ -9,17 +9,19 @@ Buka di: [https://justsemi.github.io](https://justsemi.github.io)
 - Tampilan judul dengan gradasi warna seperti MOTD Minecraft
 - Font Minecraft khusus
 
-## 📌 To-Do (Planned)
+## 📌 To-Do List
 
-- [📝] Tambahkan navigasi antar halaman
-- [📝] Tambahkan halaman khusus untuk changelog
-- [✔️] Tambahkan animasi/efek JavaScript ringan
-- [🛠️] Optimasi untuk mobile (responsiveness)
-- [⛅] Membeli pc bekas untuk selfhosting server VALAKRA
-- [⛅] Belajar Back-End
+### 🔧 Pengembangan Web
+- [✔️] Tambahkan animasi/efek ringan menggunakan JavaScript  
+- [🛠️] Optimasi tampilan untuk perangkat mobile *(responsiveness)*  
+- [📝] Buat halaman khusus untuk **changelog** dan riwayat pembaruan  
+
+### 🖥️ Infrastruktur & Belajar
+- [⛅] Membeli PC bekas untuk **self-hosting server VALAKRA**  
+- [⛅] Belajar dasar-dasar **Back-End Development** 
 
 ## 📜 Lisensi
 
-Font `Minecraft.ttf` digunakan hanya untuk kebutuhan non-komersial dan mengikuti lisensi aslinya. Konten lain bebas dimodifikasi untuk keperluan pribadi/proyek.
+Font `Minecraft.ttf` digunakan hanya untuk kebutuhan non-komersial dan mengikuti lisensi aslinya.
 
 ---
