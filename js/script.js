@@ -1,4 +1,4 @@
-const texts = ["Hi, I'm Samuel"];
+const texts = ["SEMIII"];
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -11,7 +11,7 @@ function typeEffect() {
         charIndex++;
         if (charIndex > texts[textIndex].length) {
             isDeleting = true;
-            setTimeout(typeEffect, 2000);
+            setTimeout(typeEffect, 5000);
             return;
         }
     } else {
@@ -21,7 +21,7 @@ function typeEffect() {
             textIndex = (textIndex + 1) % texts.length;
         }
     }
-    setTimeout(typeEffect, isDeleting ? 50 : 100);
+    setTimeout(typeEffect, isDeleting ? 25 : 100);
 }
 
 document.addEventListener("DOMContentLoaded", typeEffect);
