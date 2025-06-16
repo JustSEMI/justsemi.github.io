@@ -10,15 +10,12 @@
     }
 
     body {
-      background-color: #0e0e0e;
-      margin: 0;
-      font-family: 'Minecraft', sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: white;
+    font-family: 'Minecraft', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+    cursor: default;
     }
 
     .valakra-title {
@@ -40,33 +37,180 @@
       color: white;
       font-size: 18px;
     }
+    
+    .tentang-valakra {
+      text-align: center;
+      max-width: 50rem ;
+      margin: auto;
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      margin-bottom: 5rem;
 
-    .valakra-subtext {
-      margin-top: 10px;
-      font-size: 16px;
-      color: gray;
     }
 
-    .valakra-bottom {
-      margin-top: 30px;
+    .gallery-title {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bolder;
+      margin-bottom: 30px;
+      background: linear-gradient(to right, #6FF7E8, #1F7EA1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .galeri {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .galeri img {
+      max-width: 300px;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 1s ease, box-shadow 0.5s ease;
+    }
+
+    .galeri img:hover {
+      transform: scale(1.05);
+      cursor: grab;
+      box-shadow: 0 0 15px #6FF7E8;
+    }
+
+    .popup-gambar {
+      display: none;
+      position: fixed;
+      z-index: 99;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-isi {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+
+    .tombol-tutup {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .panah {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      font-size: 50px;
+      color: white;
+      user-select: none;
+      transform: translateY(-50%);
+    }
+
+    .panah.kiri {
+      left: 30px;
+    }
+
+    .panah.kanan {
+      right: 30px;
     }
   </style>
 </head>
 <body>
 
   <div class="valakra-title">
-    <span class="valakra-name">VALAKRA</span>
-    <span class="valakra-update">[Update 1.21.5 soon]</span>
+    <h3 class="valakra-name">VALAKRA</h3>
+    <p class="valakra-update">[Update 1.21.5 soon]</p>
   </div>
-  <div class="valakra-subtext">Alpha Internal Test</div>
 
-  <div class="valakra-bottom">
-    <div class="valakra-title">
-      <span class="valakra-name">VALAKRA RPG SERIES</span>
-      <span class="valakra-update">[1.20.1]</span>
-    </div>
+  <div class="tentang-valakra">
+    <h1>Tentang Valakra</h1>
+    <p>Valakra atau bisa di bilang FORTIN LAITI S2 adalah sebuah server Minecraft [whitelisted] yang beranggotakan tiga pemain aktif yang rutin bermain bersama di dalam server.
+      Server ini merupakan kelanjutan dari Server sebelumnya yaitu FORTIN LAITI S1 yang memiliki konsep serupa dengan Valakra. Sayangnya, server pertama hanya bertahan sekitar tiga minggu sebelum akhirnya kami memutuskan untuk berhenti bermain, karena beberapa dari kami mulai merasa bosan dengan Minecraft pada saat itu.
+    </p>
+    <p>
+      Namun, pada tanggal 25 Mei 2025, kami memutuskan untuk kembali bermain Minecraft. Alih-alih melanjutkan server lama, kami memilih untuk memulai dari awal dengan semangat baru.
+    </p>
   </div>
-  <div class="valakra-subtext">Prototype</div>
+
+  <p class="gallery-title">FORTIN LAITI Server Showcase [soon]</p>
+  <p class="gallery-title">VALAKRA Server Showcase</p>
+
+  <div class="galeri">
+    <img src="https://media.discordapp.net/attachments/1284196843408064544/1377537626239926352/2025-05-29_12.00.22.png?ex=6851b723&is=685065a3&hm=6e5f8beee0fbcdab51feb41641df6d947f2e8be6faccb5ef9efab98824a4dd1f&=&format=webp&quality=lossless&width=982&height=552">
+    <img src="https://cdn.discordapp.com/attachments/1284196843408064544/1378066683679477761/2025-05-31_00.17.30.png?ex=6851a99c&is=6850581c&hm=276d76467d03d3e06de8f4416df4729a16d7b48222752b1365061d03ae44cb2c&">
+    <img src="https://media.discordapp.net/attachments/1284196843408064544/1378573795043835934/2025-06-01_00.24.43.png?ex=685187a5&is=68503625&hm=9eb0b7fe55f3e6c806199c1dd0dfba3a4fe14e1c8d2345aef1349b6104146ced&=&format=webp&quality=lossless&width=982&height=552">
+    <img src="https://media.discordapp.net/attachments/1284196843408064544/1378573795475853404/2025-06-01_00.26.08.png?ex=685187a5&is=68503625&hm=0a01bdc40486cb916986ba538a8f584d2788f9f4e690c9c8d3916897b4adc4c8&=&format=webp&quality=lossless&width=982&height=552">
+    <img src="https://media.discordapp.net/attachments/1284196843408064544/1378573795975106580/2025-06-01_00.28.59.png?ex=685187a5&is=68503625&hm=2ff4ff8e216ebe1bc3e568714ea4566dff84ab895214f65e1e488622fad089a9&=&format=webp&quality=lossless&width=982&height=552">
+    <img src="https://media.discordapp.net/attachments/1284196843408064544/1378573796381818940/2025-06-01_00.06.50.png?ex=685187a5&is=68503625&hm=b572880a5de31afb4e11087d9b9c929c883e6f24390ffffe35e5a9c175b66c44&=&format=webp&quality=lossless&width=982&height=552">
+    <img src="https://media.discordapp.net/attachments/1284196843408064544/1378573796759310418/2025-06-01_00.06.57.png?ex=685187a5&is=68503625&hm=1b859499bdd9a7b348b2b16c10e763f6012a975173ddb24f6d7997366700c377&=&format=webp&quality=lossless&width=982&height=552">
+    <img src="https://media.discordapp.net/attachments/1284196843408064544/1378573797115822192/2025-06-01_00.23.23.png?ex=685187a5&is=68503625&hm=2b6a5c731070ff22bc44a71ddd201096da5a75f6e57cc45ce4d67c1234f10a9b&=&format=webp&quality=lossless&width=982&height=552">
+    <img src="https://cdn.discordapp.com/attachments/1284196843408064544/1378812175753285682/2025-06-02_02.07.08.png?ex=6851bce7&is=68506b67&hm=d6937be8e9ae69cbced85515b8499b2129b76bde75f36caeeb5cbc7280741dae&">
+    <img src="https://media.discordapp.net/attachments/1284196843408064544/1379162096180133938/2025-06-03_00.48.52.png?ex=6851b14b&is=68505fcb&hm=3274b06661d7769270288fe335e3eaff5339f27c44dd4812988bc9a1295060b1&=&format=webp&quality=lossless&width=982&height=552">
+    <img src="https://media.discordapp.net/attachments/1284196843408064544/1379509673941794936/2025-06-04_00.14.37.png?ex=6851a380&is=68505200&hm=bdc401a5ef501e43b07561e7096ed0d5918389b64607d2f26e5938ef59bbc1b8&=&format=webp&quality=lossless&width=982&height=552">
+    <img src="https://media.discordapp.net/attachments/1284196843408064544/1379509674365292585/2025-06-04_00.15.26.png?ex=6851a380&is=68505200&hm=c2d5f295afbe878ac371b3c0f8184428706702c3b79f3f893155c69adf243eaa&=&format=webp&quality=lossless&width=982&height=552">
+
+  </div>
+  
+  <div id="popupGambar" class="popup-gambar">
+    <span class="tombol-tutup">&times;</span>
+    <img class="popup-isi" id="popupGambarIsi">
+    <span class="panah kiri">&#10094;</span>
+    <span class="panah kanan">&#10095;</span>
+  </div>
 
 </body>
+<script>
+  const popupGambar = document.getElementById("popupGambar");
+  const isiGambar = document.getElementById("popupGambarIsi");
+  const tombolTutup = document.querySelector(".tombol-tutup");
+  const semuaGambar = document.querySelectorAll(".galeri img");
+  const panahKiri = document.querySelector(".panah.kiri");
+  const panahKanan = document.querySelector(".panah.kanan");
+
+  let indexSekarang = 0;
+
+  function tampilkanGambar(index) {
+    isiGambar.src = semuaGambar[index].src;
+    isiGambar.alt = semuaGambar[index].alt;
+    indexSekarang = index;
+    popupGambar.style.display = "flex";
+  }
+
+  semuaGambar.forEach((gambar, index) => {
+    gambar.addEventListener("click", () => {
+      tampilkanGambar(index);
+    });
+  });
+
+  tombolTutup.addEventListener("click", () => {
+    popupGambar.style.display = "none";
+  });
+
+  popupGambar.addEventListener("click", (e) => {
+    if (e.target === popupGambar) {
+      popupGambar.style.display = "none";
+    }
+  });
+
+  panahKiri.addEventListener("click", () => {
+    indexSekarang = (indexSekarang - 1 + semuaGambar.length) % semuaGambar.length;
+    tampilkanGambar(indexSekarang);
+  });
+
+  panahKanan.addEventListener("click", () => {
+    indexSekarang = (indexSekarang + 1) % semuaGambar.length;
+    tampilkanGambar(indexSekarang);
+  });
+</script>
 </html>
