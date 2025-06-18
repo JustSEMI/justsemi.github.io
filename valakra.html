@@ -76,6 +76,12 @@
       cursor: grab;
     }
 
+    @media (max-width: 768px) {
+      .galeri {
+        column-count: 1;
+      }
+    }
+
     .popup-gambar {
       display: none;
       position: fixed;
@@ -120,20 +126,6 @@
 
     .panah.kanan {
       right: 30px;
-    }
-    @media screen and (max-width: 768px) {
-      .valakra-title {
-        font-size: 2.5rem;
-      }
-      .tentang-valakra h1 {
-        font-size: 1.5rem;
-      }
-      .tentang-valakra p {
-        font-size: 0.5rem;
-      }
-      .galeri img {
-        max-width: 90vh;
-      }
     }
   </style>
 </head>
