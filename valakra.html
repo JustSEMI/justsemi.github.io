@@ -67,7 +67,7 @@
     }
 
     .galeri img {
-      max-width: 300px;
+      max-width: 25rem;
       height: auto;
       border-radius: 8px;
       transition: transform 1s ease, box-shadow 0.5s ease;
@@ -76,7 +76,6 @@
     .galeri img:hover {
       transform: scale(1.05);
       cursor: grab;
-      box-shadow: 0 0 15px #6FF7E8;
     }
 
     .popup-gambar {
@@ -123,6 +122,20 @@
 
     .panah.kanan {
       right: 30px;
+    }
+    @media screen and (max-width: 768px) {
+      .valakra-name {
+        font-size: 2rem;
+      }
+      .tentang-valakra h1 {
+        font-size: 1rem;
+      }
+      .tentang-valakra p {
+        font-size: .5rem;
+      }
+      .galeri img {
+        max-width: 50rem;
+      }
     }
   </style>
 </head>
