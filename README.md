@@ -13,8 +13,7 @@ Buka di: [https://justsemi.github.io](https://justsemi.github.io)
 
 ### 🔧 Pengembangan Web
 - [✔️] Tambahkan animasi/efek ringan menggunakan JavaScript  
-- [🛠️] Optimasi tampilan untuk perangkat mobile *(responsiveness)*  
-- [📝] Buat halaman khusus untuk **changelog** dan riwayat pembaruan  
+- [🛠️] Optimasi tampilan untuk perangkat mobile *(responsiveness)*   
 
 ### 🖥️ Infrastruktur & Belajar
 - [⛅] Membeli PC bekas untuk **self-hosting server VALAKRA**  
