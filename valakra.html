@@ -33,11 +33,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
-    .valakra-update {
-      color: white;
-      font-size: 18px;
-    }
     
     .tentang-valakra {
       text-align: center;
@@ -80,10 +75,6 @@
     @media screen and (max-width: 768px) {
     .valakra-name {
       font-size: 36px;
-    }
-
-    .valakra-update {
-      font-size: 16px;
     }
 
     .tentang-valakra {
@@ -152,13 +143,31 @@
     .panah.kanan {
       right: 30px;
     }
+    #snow-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
   </style>
 </head>
 <body>
 
+  <canvas id="snow-canvas"></canvas>
+
   <div class="valakra-title">
     <h3 class="valakra-name">VALAKRA</h3>
-    <p class="valakra-update">[Update 1.21.5 soon]</p>
+  </div>
+
+  <div id="statusServer" style="text-align: center; margin-top: 2rem; margin-bottom: 5rem;">
+    <h2>Status Server</h2>
+    <div id="motd" style="color: #6FF7E8;"></div>
+    <div id="players"></div>
+    <div id="version"></div>
   </div>
 
   <div class="tentang-valakra">
@@ -171,8 +180,8 @@
     </p>
   </div>
 
-  <p class="gallery-title">FORTIN LAITI Server Showcase [soon]</p>
-  <p class="gallery-title">VALAKRA Server Showcase</p>
+  <p class="gallery-title">FORTIN GALLERY</p>
+  <p class="gallery-title">VALA GALLERY</p>
 
   <div class="galeri">
     <img src="assets/img/valakra1.png">
@@ -234,4 +243,6 @@
     tampilkanGambar(indexSekarang);
   });
 </script>
+<script src="js/server.mc.js"></script>
+<script src="js/snowfall.js"></script>
 </html>
