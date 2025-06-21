@@ -60,6 +60,12 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    .status-server {
+      text-align: center; 
+      margin-top: 2rem; 
+      margin-bottom: 5rem;
+    }
     
     .tentang-valakra {
       text-align: center;
@@ -176,12 +182,19 @@
 
     @media screen and (max-width: 768px) {
     .valakra-name {
-      font-size: 36px;
+      font-size: 3rem;
     }
 
     .tentang-valakra {
-      padding: 0 16px;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      padding: 1rem 0.5rem 1rem 0.5rem;
       font-size: 14px;
+    }
+
+    .status-server {
+      margin-left: 1rem;
+      margin-right: 1rem;
     }
 
     .gallery-title {
@@ -199,6 +212,10 @@
       max-width: 100%;
       width: 100%;
     }
+    .server-stats {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
   }
   </style>
 </head>
@@ -210,7 +227,7 @@
     <h3 class="valakra-name">VALAKRA</h3>
   </div>
 
-  <div id="statusServer" class="blur" data-aos="fade-in" data-aos-duration="3000" style="text-align: center; margin-top: 2rem; margin-bottom: 5rem;">
+  <div id="statusServer" class="status-server blur" data-aos="fade-in" data-aos-duration="3000">
     <h2>Status Server</h2>
     <div id="motd" style="color: #6FF7E8;"></div>
     <div id="players"></div>
