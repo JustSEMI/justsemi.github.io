@@ -22,4 +22,4 @@ async function muatStatusServer() {
 
   muatStatusServer();
 
-  setInterval(muatStatusServer, 30000);
+  setInterval(muatStatusServer, 10000);
