@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <title>VALAKRA</title>
   <style>
     @font-face {
@@ -19,8 +20,30 @@
       cursor: default;
     }
 
+    .blur {
+      background: rgba(18, 18, 18, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 2.5rem;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      margin: 2rem auto;
+      width: fit-content;
+      max-width: 90%;
+    }
+
+    #snow-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
     .valakra-title {
-      font-size: 48px;
+      font-size: 4rem;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -64,40 +87,14 @@
       max-width: 25rem;
       height: auto;
       border-radius: 8px;
-      transition: transform 1s ease, box-shadow 0.5s ease;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
 
     .galeri img:hover {
-      transform: scale(1.05);
+      transform: scale(1.025);
       cursor: grab;
     }
 
-    @media screen and (max-width: 768px) {
-    .valakra-name {
-      font-size: 36px;
-    }
-
-    .tentang-valakra {
-      padding: 0 16px;
-      font-size: 14px;
-    }
-
-    .gallery-title {
-      font-size: 24px;
-      margin: 1rem 1rem;
-    }
-
-    .galeri {
-      flex-direction: column;
-      align-items: center;
-      padding: 0 12px;
-    }
-
-    .galeri img {
-      max-width: 100%;
-      width: 100%;
-    }
-  }
     .popup-gambar {
       display: none;
       position: fixed;
@@ -143,34 +140,80 @@
     .panah.kanan {
       right: 30px;
     }
-    #snow-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
+
+    .server-stats {
+      margin: 5rem auto;
+      max-width: 600px;
+      text-align: left;
     }
 
+    .stats-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      line-height: 2rem;
+    }
+
+    .stats-list li {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 0.5rem 0;
+    }
+
+    footer {
+      color: white;
+      text-align: center;
+      position: relative;
+      padding: 10px 0 10px 0;
+      margin: 5rem 0rem 1rem 0rem;
+      font-size: .80rem;
+      letter-spacing: .20rem;
+      font-weight: 500;
+    }
+
+    @media screen and (max-width: 768px) {
+    .valakra-name {
+      font-size: 36px;
+    }
+
+    .tentang-valakra {
+      padding: 0 16px;
+      font-size: 14px;
+    }
+
+    .gallery-title {
+      font-size: 24px;
+      margin: 1rem 1rem;
+    }
+
+    .galeri {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 12px;
+    }
+
+    .galeri img {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
   </style>
 </head>
 <body>
 
   <canvas id="snow-canvas"></canvas>
 
-  <div class="valakra-title">
+  <div data-aos="fade-down" data-aos-duration="3000" class="valakra-title">
     <h3 class="valakra-name">VALAKRA</h3>
   </div>
 
-  <div id="statusServer" style="text-align: center; margin-top: 2rem; margin-bottom: 5rem;">
+  <div id="statusServer" class="blur" style="text-align: center; margin-top: 2rem; margin-bottom: 5rem;">
     <h2>Status Server</h2>
     <div id="motd" style="color: #6FF7E8;"></div>
     <div id="players"></div>
     <div id="version"></div>
   </div>
 
-  <div class="tentang-valakra">
+  <div data-aos="fade-up" data-aos-duration="3000" class="tentang-valakra blur">
     <h1>Tentang Valakra</h1>
     <p>Valakra atau bisa di bilang FORTIN LAITI S2 adalah sebuah server Minecraft [whitelisted] yang beranggotakan tiga pemain aktif yang rutin bermain bersama di dalam server.
       Server ini merupakan kelanjutan dari Server sebelumnya yaitu FORTIN LAITI S1 yang memiliki konsep serupa dengan Valakra. Sayangnya, server pertama hanya bertahan sekitar tiga minggu sebelum akhirnya kami memutuskan untuk berhenti bermain, karena beberapa dari kami mulai merasa bosan dengan Minecraft pada saat itu.
@@ -180,11 +223,10 @@
     </p>
   </div>
 
-  <p class="gallery-title">FORTIN GALLERY</p>
-  <p class="gallery-title">VALA GALLERY</p>
+  <p data-aos="fade-left" data-aos-duration="3000" class="gallery-title">FORTIN GALLERY</p>
+  <p data-aos="fade-right" data-aos-duration="3000" class="gallery-title">VALA GALLERY</p>
 
   <div class="galeri">
-    <img src="assets/img/valakra1.png">
     <img src="assets/img/valakra2.png">
     <img src="assets/img/valakra3.png">
     <img src="assets/img/valakra4.png">
@@ -199,7 +241,19 @@
     <span class="panah kanan">&#10095;</span>
   </div>
 
+  <div class="server-stats blur-card" data-aos="fade-up" data-aos-duration="3000">
+    <h2>Server Stats</h2>
+    <ul class="stats-list">
+      <li>World Create: 25 Mei 2025</li>
+      <li>World Size: 3.76 GB</li>
+      <li>Status Whitelist: Aktif</li>
+    </ul>
+  </div>  
+
 </body>
+<footer>
+  &copy; 2025 Valakra Server.
+</footer>
 <script>
   const popupGambar = document.getElementById("popupGambar");
   const isiGambar = document.getElementById("popupGambarIsi");
@@ -245,4 +299,6 @@
 </script>
 <script src="js/server.mc.js"></script>
 <script src="js/snowfall.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
 </html>
