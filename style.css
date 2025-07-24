@@ -135,7 +135,13 @@ nav h2 {
     font-size: 13rem;
 }
 
+#home p {
+    width: 75%;
+    margin: 0 auto;
+}
+
 #project {
+    height: auto;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -144,20 +150,46 @@ nav h2 {
     color: #fff;
 }
 
-#project h2 {
-    margin: 0;
-    font-family: azonix, sans-serif;
-    font-size: 6rem;
+.valakra {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    gap: 2rem;
 }
 
-#project p {
-    margin: 1rem auto;
-    max-width: 50%;
+.valakra h2 {
+    margin: 5rem auto 0 auto;
+    font-family: azonix;
+    font-size: 5rem;
+}
+
+.galeri {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+
+.galeri img {
+    max-width: 25rem;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.galeri img:hover {
+    transform: scale(1.025);
 }
 
 #kontak {
-    padding: 4rem 2rem;
-    text-align: center;
+    margin: 7.5rem;
+}
+
+#kontak h2 {
+    font-family: azonix;
+    font-size: 3rem;
+    margin: 0;
 }
 
 #kontak a {
@@ -179,6 +211,6 @@ footer {
     font-size: .55rem;
     font-weight: 500;
     letter-spacing: .20rem;
-    padding: 10px 0 10px 0;
+    padding: 0 0 10px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
