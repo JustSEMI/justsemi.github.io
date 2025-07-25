@@ -7,16 +7,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="obf.script.js" defer></script>
     <title>LAH?</title>
 </head>
-<body>
+<body class="protect">
     <audio id="bg-music" preload="auto" loop></audio>
     <span id="music-toggle" class="music-control"></span>
     <div class="cursor"></div>
     <div class="cursor-outline"></div>
-    <nav>
+    <nav data-aos="fade-down" data-aos-delay="200">
         <img src="" alt="logo">
         <ul class="navbar">
             <li><a href="#home">Home</a></li>
@@ -39,14 +38,17 @@
                 <h2 data-aos="fade-down" data-aos-delay="250">PROJECT</h2>
                 <h2 data-aos="fade-up" data-aos-delay="200">VALAKRA</h2>
             </div>
-            <p>A Minecraft Server</p>
-            <div class="galeri">
-                <img src="assets/webp/1.webp">
-                <img src="assets/webp/2.webp">
-                <img src="assets/webp/3.webp">
+            <p data-aos="fade-up" data-aos-delay="300">A Minecraft Server</p>
+            <div data-aos="fade-in" data-aos-delay="600" class="galeri">
+                <img src="assets/webp/1.webp" >
+                <img src="assets/webp/2.webp" >
+                <img src="assets/webp/3.webp" >
+                <img src="assets/webp/4.webp" >
+                <img src="assets/webp/5.webp" >
+                <img src="assets/webp/6.webp" >
             </div>
         </section>
-        <section id="kontak">
+        <section id="kontak" data-aos="fade-right" data-aos-duration="1000">
             <h2>CONTACT</h2>
             <p>Feel free to reach out me via social media.</p>
             <div>
@@ -61,5 +63,6 @@
         <p>dibuat dengan sepenuh hati ;3</p>
     </footer>
 </body>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init();</script>
 </html>
