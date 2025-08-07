@@ -22,43 +22,6 @@ body {
     overflow-x: hidden;
 }
 
-.music-control {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease;
-}
-
-.music-control.playing::before,
-.music-control.playing::after {
-    content: "";
-    display: block;
-    width: 6px;
-    height: 20px;
-    background: #fff;
-    margin: 0 2px;
-    border-radius: 2px;
-}
-
-.music-control:not(.playing)::before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    border-left: 16px solid #fff;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-}
-
 /* kursor khusus */
 .cursor,
 .cursor-outline {
@@ -183,7 +146,7 @@ nav h2 {
 }
 
 #kontak {
-    margin: 7.5rem;
+    margin: 7.5rem 0 1rem 7.5rem;
 }
 
 #kontak h2 {
@@ -202,6 +165,10 @@ nav h2 {
 #kontak a:hover {
     color: #007bff;
     transform: scale(1.5);
+}
+
+.discord-card {
+    margin: 0 0 7.5rem 7.5rem;
 }
 
 footer {
@@ -255,13 +222,6 @@ footer {
     #kontak a {
         font-size: 1.75rem;
         letter-spacing: 0.5rem;
-    }
-
-    .music-control {
-        bottom: 15px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
     }
 
     .cursor,
