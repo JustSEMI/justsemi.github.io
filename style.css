@@ -186,18 +186,16 @@ footer {
 @media (max-width: 768px) {
 
     #home h1 {
-        font-size: 3rem;
+        font-size: 6rem;
     }
 
     #home p {
         width: 90%;
-        font-size: .25rem;
+        font-size: .9rem;
     }
 
     .valakra h2 {
-        font-size: 2rem;
-        text-align: center;
-        margin: 2rem auto 0 auto;
+        font-size: 4rem;
     }
 
     .galeri {
@@ -222,6 +220,10 @@ footer {
     #kontak a {
         font-size: 1.75rem;
         letter-spacing: 0.5rem;
+    }
+
+    .discord-card {
+        margin: 0 0 5rem 5rem;
     }
 
     .cursor,
