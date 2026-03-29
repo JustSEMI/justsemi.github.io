@@ -1,12 +1,12 @@
 * {
     scroll-behavior: smooth;
     font-family: 'Poppins', sans-serif;
-    cursor: none;
+    box-sizing: border-box;
 }
 
 @font-face {
     font-family: azonix;
-    src: url(assets/fonts/Azonix.otf);
+    src: url(assets/fonts/Azonix.otf); /* Pastikan path font-mu bener ya */
 }
 
 @font-face {
@@ -18,267 +18,332 @@ body {
     margin: 0;
     padding: 0;
     color: #e0e0e0;
-    background-color: #121212;
+    background-color: #0c0d10;
     overflow-x: hidden;
-}
-
-/* kursor khusus */
-.cursor,
-.cursor-outline {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  border-radius: 50%;
-  z-index: 2;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.cursor {
-  width: 15px;
-  height: 15px;
-  background-color: white;
-}
-
-.cursor-outline {
-  width: 32px;
-  height: 32px;
-  border: 2px solid white;
-}
-
-nav {
-    top: 0;
-    z-index: 1;
-    padding: .5rem 2rem;
-    background-color: transparent;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    position: sticky;
-    align-items: center;
-    justify-content: space-between;
-}
-
-nav h2 {
-    font-family: metro;
-}
-
-.navbar {
-    list-style: none;
-    display: flex;
-    gap: 1.25rem;
-}
-
-.navbar a {
-    color: #e0e0e0;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: .5s;
-}
-
-.navbar a:hover {
-    color: #007bff;
-}
-
-#home {
-    height: 100vh;
     display: flex;
     flex-direction: column;
-    text-align: center;
-    justify-content: center;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/* NAV */
+.nav {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 20px;
+    left: 50%;
+    width: 95%;
+    padding: 1rem 2rem;
+    background: rgba(12, 13, 16, 0.7);
+    transform: translateX(-50%);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+}
+
+.logo-text {
+    font-family: metro, sans-serif;
+    margin: 0;
     color: #fff;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #a0a0b0;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #6366f1;
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+/* MENU & SIDEBAR */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.menu-toggle:hover {
+    color: #6366f1;
+}
+
+.sidebar {
+    position: fixed;
+    top: 85px;
+    right: -250px;
+    width: 220px;
+    height: auto;
+    background: rgba(12, 13, 16, 0.95);
+    backdrop-filter: blur(15px);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2000;
+    padding: 1.5rem;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: none;
+    box-shadow: -5px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.close-btn {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    text-align: right;
+    margin-bottom: 1rem;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #ff5c5c;
+    transform: scale(1.1);
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar-links a {
+    color: #a0a0b0;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.sidebar-links a:hover {
+    color: #6366f1;
+    padding-left: 10px;
+}
+
+/* MAIN CONTENT */
+#home {
+    min-height: 100vh;
+    display: flex;                     
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
 }
 
 #home h1 {
-    margin: 0;
+    margin: 0 0 1rem 0;
     font-family: azonix, sans-serif;
-    font-size: 13rem;
+    font-size: clamp(4rem, 10vw, 10rem);
+    text-shadow: 0 0 100px rgba(99, 102, 241, 0.3);
 }
 
-#home p {
-    width: 75%;
-    margin: 0 auto;
-}
-
+/* PROJECT SECTION */
 #project {
-    height: auto;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
+    padding: 5rem 2rem;
     text-align: center;
-    justify-content: center;
-    color: #fff;
 }
 
-.valakra {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    gap: 2rem;
-}
-
-.valakra h2 {
-    margin: 5rem auto 0 auto;
-    font-family: azonix;
-    font-size: 5rem;
-}
-
-.galeri {
+.project-header {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 1.25rem;
-    margin-top: 2.5rem;
+    gap: 1.5rem;
 }
 
-.galeri img {
-    max-width: 25rem;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+.project-header h2 {
+    margin: 0;
+    font-family: azonix;
+    font-size: clamp(2.5rem, 6vw, 4rem);
 }
 
-.galeri img:hover {
-    transform: scale(1.025);
+.subtitle {
+    color: #a0a0b0;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 
-.valakra-hidden {
+.vortex-hidden {
     display: none;
 }
 
-#valakra-seemore {
-    display: block;
-    margin: 2rem auto;
-    padding: 0.75rem 1.5rem;
-    background: #007bff;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 1rem;
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 3rem auto;
+    justify-content: center;
 }
 
-#valakra-seemore:hover {
-    background: #0056b3;
+.card {
+    background: transparent;
+    border: 1px solid white;
+    padding: 20px;
+    border-radius: 16px;
+    transition: 0.3s ease;
+    text-align: center;
 }
 
-#kontak {
-    margin: 7.5rem 0 1rem 7.5rem;
+.card:hover {
+    border-color: #6366f1;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+    transform: translateY(-5px);
 }
 
-#kontak h2 {
-    font-family: azonix;
-    font-size: 3rem;
-    margin: 0;
+/* SWIPER SLIDER */
+.swiper-container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 1rem 0 3.5rem 0;
+    margin: 0 auto;
+    position: relative;
 }
 
-#kontak a {
-    font-size: 2.5rem;
-    color: #fff;
-    letter-spacing: 1rem;
-    transition: 0.5s;
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#kontak a:hover {
-    color: #007bff;
-    transform: scale(1.5);
-}
-
-.discord-card {
-    margin: 4rem 0 4rem 7.5rem;
-}
-
-.discord-card img {
-    max-width: 100%;
+.swiper-slide img {
+    max-width: 800px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
-.discord-card img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+.swiper-button-next,
+.swiper-button-prev {
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: 0.3s ease;
 }
 
-footer {
+.swiper-pagination-bullet-active {
+    background: #6366f1;
+    opacity: 1;
+}
+
+.swiper-pagination {
+    bottom: 5px !important;
+}
+
+.project-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    border: 2px solid rgba(99, 102, 241, 0.5);
+    border-radius: 16px;
+    color: #a0a0b0;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    border-color: #6366f1;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+}
+
+/* FOOTER */
+.glass-footer {
     position: relative;
     text-align: center;
-    font-family: Arial, sans-serif;
-    font-size: .55rem;
-    font-weight: 500;
-    letter-spacing: .20rem;
-    padding: 0 0 10px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 1.5rem 0;
+    background: rgba(12, 13, 16, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    color: #707080;
 }
 
-@media (max-width: 480px) {
-    .discord-card img {
-        max-width: 260px;
-    }
+.glass-footer p {
+    margin: 5px 0;
 }
 
-/* Responsif 768px */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-
-    #home h1 {
-        font-size: clamp(3rem, 12vw, 7rem);
-        line-height: 1.1;
+    .nav-links {
+        display: none;
     }
-
-    #home p {
-        width: 90%;
-        font-size: 0.95rem;
-        line-height: 1.4;
+    
+    .menu-toggle {
+        display: block;
     }
-
-    .valakra h2 {
-        font-size: clamp(2rem, 8vw, 4rem);
-        text-align: center;
-    }
-
-    .galeri {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-        justify-items: center;
-    }
-
-    .galeri img {
-        width: 90%;
-        max-width: 500px;
-    }
-
-    #kontak {
-        margin: 3rem 1rem;
-        text-align: center;
-    }
-
-    #kontak h2 {
-        font-size: 2rem;
-    }
-
-    #kontak a {
-        font-size: 1.5rem;
-        letter-spacing: 0.3rem;
-    }
-
-    .discord-card {
-        margin: 2rem auto;
-        text-align: center;
+    
+    .swiper-slide img {
         width: 100%;
     }
-
-    .discord-card img {
-        width: 100%;
-        max-width: 320px;
-        height: auto;
-        border-radius: 12px;
-    }
-
-    .cursor,
-    .cursor-outline {
+    
+    .swiper-button-next,
+    .swiper-button-prev {
         display: none;
     }
 }

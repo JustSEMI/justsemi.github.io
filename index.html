@@ -1,69 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
-    <script src="script.js" defer></script>
-    <title>LAH?</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <title>oprex | Portfolio</title>
 </head>
-<body class="protect">
-    <div class="cursor"></div>
-    <div class="cursor-outline"></div>
-    <nav>
-        <img src="" alt="logo">
-        <ul class="navbar">
+
+<body>
+    <nav class="nav">
+        <div class="nav-left">
+            <h2 class="logo-text">oprxz.</h2>
+        </div>
+
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#project">Project</a></li>
+                <li><a href="#kontak">Contact</a></li>
+            </ul>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <div class="sidebar" id="sidebar">
+        <div class="close-btn"><i class="fas fa-times"></i></div>
+        <ul class="sidebar-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#project">Project</a></li>
             <li><a href="#kontak">Contact</a></li>
         </ul>
-    </nav>
+    </div>
+
     <main>
         <section id="home">
-            <h1 data-aos="fade-down" data-aos-delay="500">bluezex</h1>
-            <p data-aos="fade-up" data-aos-delay="400">Halo ges! Saya Samuel, biasa dipanggil Semi atau Sem.
-                Di sini kalian bisa ngintip project gue.
-                Tapi gapapa, progress is progress, walau pun sedikit 😅
-                Enjoyin aja yaa liat-liatnya 😎
-            </p>
+            <div class="home-content" data-aos="fade-up">
+                <h1>Hi, I'm Samuel.</h1>
+                <p>I'm a student at Jember State Polytechnic, who loves programming and technology.</p>
+                <p>I enjoy creating projects and learning new things in the world of software development.</p>
+            </div>
         </section>
+
         <section id="project">
-            <div class="valakra">
+            <div class="project-header">
                 <h2 data-aos="fade-down" data-aos-delay="250">PROJECT</h2>
-                <h2 data-aos="fade-up" data-aos-delay="200">VALAKRA</h2>
+                <h2 class="accent-text" data-aos="fade-up" data-aos-delay="200">VORTEX TOOLS</h2>
             </div>
-            <p data-aos="fade-up" data-aos-delay="300">A Minecraft Server</p>
-            <div data-aos="fade-in" data-aos-delay="450" class="galeri">
-                <img src="assets/webp/1.webp" alt="">
-                <img src="assets/webp/2.webp" alt="">
-                <img src="assets/webp/3.webp" alt="">
-                <img src="assets/webp/4.webp" alt="" class="valakra-hidden">
-                <img src="assets/webp/5.webp" alt="" class="valakra-hidden">
-                <img src="assets/webp/6.webp" alt="" class="valakra-hidden">
+            <p class="subtitle" data-aos="fade-up" data-aos-delay="300">A multifunctional application featuring sound conversion, media downloader, and system utility tools.</p>
+            
+            <div class="project-actions" data-aos="fade-in" data-aos-delay="500">
+                <a href="https://github.com/JustSEMI/vortex-tools" target="_blank" class="btn-outline">
+                    <i class="fab fa-github"></i> View Repository
+                </a>
             </div>
-            <button id="valakra-seemore" data-aos="fade-in" data-aos-delay="500">Show More</button>
+
+            <div class="card-container">
+                <div class="card" data-aos="fade-up" data-aos-delay="600">
+                    <h3>IMAGE</h3>
+                    <p>[+] Background Remover</p>
+                    <p>[+] Upscaler</p>
+                    <p>[+] Converter</p>
+                    <p>[+] Watermark</p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="700">
+                    <h3>DOCUMENT</h3>
+                    <p>[+] Converter PDF</p>
+                    <p>[+] Converter DOCX</p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="800">
+                    <h3>AUDIO</h3>
+                    <p>[+] Converter MP3</p>
+                    <p>[+] Converter WAV</p>
+                    <p>[+] Converter FLAC</p>
+                    <p>[+] Converter OGG</p>
+                </div>
+                <div class="card hidden" data-aos="fade-up" data-aos-delay="600">
+                    <h3>DOWNLOADER</h3>
+                    <p>[+] YT Downloader</p>
+                </div>
+                <div class="card hidden" data-aos="fade-up" data-aos-delay="700">
+                    <h3>UTILITY</h3>
+                    <p>[+] Memory Manager</p>
+                </div>
+                <div class="card hidden" data-aos="fade-up" data-aos-delay="800">
+                    <h3>COMING SOON</h3>
+                    <p>[+] Next Update</p>
+                </div>
+            </div>
+        
+            <div class="swiper swiper-container" data-aos="fade-in" data-aos-delay="450">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="assets/webp/vortex/1.png" alt="Vortex Tools 1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/webp/vortex/2.png" alt="Vortex Tools 2">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/webp/vortex/3.png" alt="Vortex Tools 3">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/webp/vortex/4.png" alt="Vortex Tools 4">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="assets/webp/vortex/5.png" alt="Vortex Tools 5">
+                    </div>
+                </div>
+                
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                
+                <div class="swiper-pagination"></div>
+            </div>
         </section>
-        <section id="kontak" data-aos="fade-right" data-aos-duration="1000">
-            <h2>CONTACT</h2>
-            <p>Feel free to reach out me via social media.</p>
-            <div>
-                <a href="https://github.com/JustSEMI" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/semii.fht" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://open.spotify.com/user/312x2wjkk2yqzmli5pal3xhfdlwu?si=b10c08cf5d584e98" target="_blank"><i class="fab fa-spotify"></i></a>
-            </div>
-        </section>
-        <div class="discord-card" data-aos="fade-right" data-aos-duration="1500">
-            <a href="https://discord.com/users/773408954352009216"><img src="https://lanyard.cnrad.dev/api/773408954352009216?showDisplayName=true&animatedDecoration=true&hideActivity=whenNotUsed&bg=131313"/></a>
-        </div>
     </main>
-    <footer>
-        <p>&copy; 2025. All right reserved</p>
+
+    <footer class="glass-footer">
+        <p>&copy; 2026 Samuel.</p>
         <p>dibuat dengan sepenuh hati ;3</p>
     </footer>
+
+    <script src="script.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init();</script>
 </html>
