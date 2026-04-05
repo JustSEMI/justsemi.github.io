@@ -240,46 +240,6 @@ main {
     transform: translateY(-5px);
 }
 
-/* SWIPER SLIDER */
-.swiper-container {
-    width: 100%;
-    max-width: 1000px;
-    padding: 1rem 0 3.5rem 0;
-    margin: 0 auto;
-    position: relative;
-}
-
-.swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.swiper-slide img {
-    max-width: 800px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    transition: 0.3s ease;
-}
-
-.swiper-pagination-bullet-active {
-    background: #6366f1;
-    opacity: 1;
-}
-
-.swiper-pagination {
-    bottom: 5px !important;
-}
-
 .project-actions {
     display: flex;
     justify-content: center;
