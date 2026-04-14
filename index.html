@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.2/dist/lenis.css">
     <title>oprex | Portfolio</title>
 </head>
-
 <body>
+    <div id="preloader">
+        <div class="preloader-content">
+            <h2 class="logo-text pulse">oprxz.</h2>
+        </div>
+    </div>
+
+    <div id="bg-animation" class="bg-animation"></div>
+
     <nav class="nav">
         <div class="nav-left">
             <h2 class="logo-text">oprxz.</h2>
         </div>
-
         <div class="nav-right">
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -38,69 +42,113 @@
 
     <main>
         <section id="home">
-            <div class="home-content" data-aos="fade-up">
-                <h1>Hi, I'm Samuel.</h1>
-                <p>I'm a student at Jember State Polytechnic, who loves programming and technology.</p>
-                <p>I enjoy creating projects and learning new things in the world of software development.</p>
+            <div class="home-content anim-fade-up">
+                <h1 class="hero-title">HI, I'M <span class="text-gradient">SAMUEL.</span></h1>
+                
+                <div class="subtitle-container">
+                    <p class="hero-subtitle">
+                        A Student at Jember State Polytechnic.<br>
+                        Passionate Developer from Jember.<br>
+                        I build IoT and Web applications.
+                    </p>
+                </div>
+                
+                <div class="hero-actions anim-fade-up" data-delay="500">
+                    <a href="#project" class="btn-primary">Explore Projects</a>
+                    <a href="https://github.com/JustSEMI" target="_blank" class="btn-outline">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
             </div>
+
+            <a href="#project" class="scroll-indicator anim-fade-in" data-delay="800">
+                <div class="mouse"></div>
+                <p>Scroll Down</p>
+                <i class="fas fa-chevron-down bounce"></i>
+            </a>
         </section>
 
         <section id="project">
             <div class="project-header">
-                <h2 data-aos="fade-down" data-aos-delay="250">PROJECT</h2>
-                <h2 class="accent-text" data-aos="fade-up" data-aos-delay="200">VORTEX TOOLS</h2>
+                <h2 class="anim-fade-down" data-delay="100">PROJECT</h2>
+                <h2 class="text-gradient anim-fade-up" data-delay="200">VORTEX TOOLS</h2>
             </div>
-            <p class="subtitle" data-aos="fade-up" data-aos-delay="300">A multifunctional application featuring sound conversion, media downloader, and system utility tools.</p>
+            <p class="hero-subtitle anim-fade-up" data-delay="300" style="margin-bottom: 2rem;">A multifunctional application featuring sound conversion, media downloader, and system utility tools.</p>
             
-            <div class="project-actions" data-aos="fade-in" data-aos-delay="500">
+            <div class="project-actions anim-fade-up" data-delay="400">
                 <a href="https://github.com/JustSEMI/vortex-tools" target="_blank" class="btn-outline">
                     <i class="fab fa-github"></i> View Repository
                 </a>
             </div>
 
             <div class="card-container">
-                <div class="card" data-aos="fade-up" data-aos-delay="600">
+                <div class="card anim-fade-up" data-delay="100">
                     <h3>IMAGE</h3>
                     <p>[+] Background Remover</p>
                     <p>[+] Upscaler</p>
                     <p>[+] Converter</p>
                     <p>[+] Watermark</p>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="700">
+                <div class="card anim-fade-up" data-delay="200">
                     <h3>DOCUMENT</h3>
                     <p>[+] Converter PDF</p>
                     <p>[+] Converter DOCX</p>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="800">
+                <div class="card anim-fade-up" data-delay="300">
                     <h3>AUDIO</h3>
                     <p>[+] Converter MP3</p>
                     <p>[+] Converter WAV</p>
                     <p>[+] Converter FLAC</p>
                     <p>[+] Converter OGG</p>
                 </div>
-                <div class="card hidden" data-aos="fade-up" data-aos-delay="600">
+                <div class="card anim-fade-up" data-delay="400">
                     <h3>DOWNLOADER</h3>
-                    <p>[+] YT Downloader</p>
+                    <p>[+] YouTube Video/Audio</p>
+                    <p>[+] Instagram Media</p>
+                    <p>[+] TikTok Downloader</p>
                 </div>
-                <div class="card hidden" data-aos="fade-up" data-aos-delay="700">
+                <div class="card anim-fade-up" data-delay="500">
                     <h3>UTILITY</h3>
                     <p>[+] Memory Manager</p>
+                    <p>[+] Process Manager</p>
+                    <p>[+] System Junk Cleaner</p>
                 </div>
-                <div class="card hidden" data-aos="fade-up" data-aos-delay="800">
-                    <h3>COMING SOON</h3>
-                    <p>[+] Next Update</p>
+                <div class="card anim-fade-up" data-delay="600">
+                    <h3>OCR</h3>
+                    <p>[+] Image to Text</p>
+                    <p>[+] Text Extraction</p>
+                    <p>[+] Coming Soon...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak">
+            <div class="project-header">
+                <h2 class="anim-fade-down" data-delay="100">GET IN</h2>
+                <h2 class="text-gradient anim-fade-up" data-delay="200">TOUCH</h2>
+            </div>
+            <div class="contact-container anim-fade-up" data-delay="300">
+                <div class="contact-info">
+                    <p class="hero-subtitle">Feel free to reach out for collaborations or just a friendly hello!</p>
+                    <div class="social-links">
+                        <a href="https://github.com/JustSEMI" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/semii.fht" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="https://open.spotify.com/user/312x2wjkk2yqzmli5pal3xhfdlwu?si=b10c08cf5d584e98" target="_blank" class="social-btn"><i class="fab fa-spotify"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
     <footer class="glass-footer">
-        <p>&copy; 2026 Samuel.</p>
+        <p>© 2026 Samuel.</p>
         <p>dibuat dengan sepenuh hati ;3</p>
     </footer>
 
+    <script src="https://unpkg.com/lenis@1.1.2/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
     <script src="script.js" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>
