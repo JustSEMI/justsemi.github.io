@@ -1,154 +1,254 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="indonesian">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.2/dist/lenis.css">
-    <title>oprex | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="/css/base-global.css">
+    <link rel="stylesheet" href="/css/cmp.nav.css">
+    <link rel="stylesheet" href="/css/main/view.hero.css">
+    <link rel="stylesheet" href="/css/main/view.about.css">
+    <link rel="stylesheet" href="/css/main/view.projects.css">
+    <link rel="stylesheet" href="/css/cmp.footer.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <title>СЕМИ</title>
 </head>
+
 <body>
-    <div id="preloader">
+
+    <div id="preloader" class="preloader">
         <div class="preloader-content">
-            <h2 class="logo-text pulse">oprxz.</h2>
+            <div class="loader-logo">СЕМИ</div>
+            <p class="loader-status">System ready to initialize...</p>
+            <button id="start-btn" class="start-button">
+                ENTER SYSTEM
+            </button>
         </div>
     </div>
-
-    <div id="bg-animation" class="bg-animation"></div>
 
     <nav class="nav">
         <div class="nav-left">
-            <h2 class="logo-text">oprxz.</h2>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+        </div>
+        <div class="nav-center">
+            <h1 href="" class="nav-text">СЕМИ</h1>
         </div>
         <div class="nav-right">
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#project">Project</a></li>
-                <li><a href="#kontak">Contact</a></li>
-            </ul>
-            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            <a href="#projects">Projects</a>
+            <a href="#footer">Contact</a>
         </div>
     </nav>
-
-    <div class="sidebar" id="sidebar">
-        <div class="close-btn"><i class="fas fa-times"></i></div>
-        <ul class="sidebar-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#project">Project</a></li>
-            <li><a href="#kontak">Contact</a></li>
-        </ul>
-    </div>
-
     <main>
-        <section id="home">
-            <div class="home-content anim-fade-up">
-                <h1 class="hero-title">HI, I'M <span class="text-gradient">SAMUEL.</span></h1>
-                
-                <div class="subtitle-container">
-                    <p class="hero-subtitle">
-                        A Student at Jember State Polytechnic.<br>
-                        Passionate Developer from Jember.<br>
-                        I build IoT and Web applications.
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <h1 class="hero-title">Membangun Solusi Digital dari <span>Desktop hingga IoT.</span></h1>
+
+                <p class="hero-subtitle">
+                    Halo, saya Samuel. Seorang mahasiswa program studi <strong>Teknik Komputer</strong> (Jurusan
+                    Teknologi Informasi) di <strong>Politeknik Negeri Jember</strong>.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#about" class="btn-primary">Tentang Saya</a>
+                    <a href="#" class="btn-secondary">Kunjungi GitHub</a>
+                </div>
+
+                <div class="scroll-indicator">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                    <span class="scroll-text">Scroll</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-split" data-aos="fade-up">
+
+                    <div class="about-left">
+                        <h2 class="section-title">Mengenal Lebih Dekat.</h2>
+                        <div class="status-badge">
+                            <span class="status-dot"></span>
+                            <span>Mahasiswa Teknik Komputer</span>
+                        </div>
+                    </div>
+
+                    <div class="about-right">
+                        <div class="code-window">
+                            <div class="window-header">
+                                <div class="window-dots">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                </div>
+                                <div class="window-title">samuel_profile.py</div>
+                            </div>
+
+                            <div class="window-body">
+                                <pre><code><span class="keyword">class</span> <span class="class-name">Developer</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>):
+        <span class="variable">self</span>.name = <span class="string">"Samuel"</span>
+        <span class="variable">self</span>.usrname = <span class="string">"oprexz"</span>
+        <span class="variable">self</span>.campus = <span class="string">"Politeknik Negeri Jember"</span>
+        <span class="variable">self</span>.major = <span class="string">"Teknik Komputer"</span>
+        <span class="variable">self</span>.stack = [<span class="string">"Python"</span>, <span class="string">"C++"</span>, <span class="string">"Frontend"</span>, <span class="string">"Lua"</span>]
+
+    <span class="keyword">def</span> <span class="function">build_solution</span>(<span class="variable">self</span>, Teh=<span class="keyword">True</span>):
+        <span class="keyword">if</span> coffee:
+            <span class="keyword">return</span> <span class="string">"IoT integrated. "</span>
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> <span class="string">"System Error: Need more Teh."</span>
+                                </code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Eksplorasi & Karya</h2>
+                    <p class="section-description">Beberapa project yang telah saya Develop.
                     </p>
                 </div>
-                
-                <div class="hero-actions anim-fade-up" data-delay="500">
-                    <a href="#project" class="btn-primary">Explore Projects</a>
-                    <a href="https://github.com/JustSEMI" target="_blank" class="btn-outline">
-                        <i class="fab fa-github"></i> GitHub
+
+                <div class="project-grid">
+
+                    <a href="https://github.com/JustSEMI/_kotaku" class="project-card" data-aos="fade-up"
+                        data-aos-delay="100" target="_blank">
+                        <div class="project-header">
+                            <h3>KOTAKU</h3>
+                            <div class="header-badges">
+                                <span class="badge">Open Source (MIT)</span>
+                                <span class="badge">Under Development</span>
+                            </div>
+                        </div>
+                        <p class="project-desc">Sistem Kotak Amal Terpadu & Terukur. Integrasi IoT perangkat keras untuk
+                            pengiriman data <i>real-time</i> via Website, webhook Discord, dan Telegram Bot. Sebagai
+                            tugas akhir Semester 2.</p>
+                        <div class="project-tags">
+                            <span>IoT</span>
+                            <span>ESP32</span>
+                            <span>C++</span>
+                            <span>Laravel 12</span>
+                        </div>
                     </a>
-                </div>
-            </div>
 
-            <a href="#project" class="scroll-indicator anim-fade-in" data-delay="800">
-                <div class="mouse"></div>
-                <p>Scroll Down</p>
-                <i class="fas fa-chevron-down bounce"></i>
-            </a>
-        </section>
+                    <a href="https://github.com/JustSEMI/vortex-tools" class="project-card" data-aos="fade-up"
+                        data-aos-delay="200" target="_blank">
+                        <div class="project-header">
+                            <h3>Vortex-Tools</h3>
+                            <div class="header-badges">
+                                <span class="badge">Open Source (MIT)</span>
+                                <span class="badge">Discontinued</span>
+                            </div>
+                        </div>
+                        <p class="project-desc">Utilitas desktop multi-fungsi dengan eksekusi ringan. Dirancang untuk
+                            unduh media, pembersihan sistem, hingga konversi dokumen.</p>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>ImGui</span>
+                            <span>PyInstaller</span>
+                        </div>
+                    </a>
 
-        <section id="project">
-            <div class="project-header">
-                <h2 class="anim-fade-down" data-delay="100">PROJECT</h2>
-                <h2 class="text-gradient anim-fade-up" data-delay="200">VORTEX TOOLS</h2>
-            </div>
-            <p class="hero-subtitle anim-fade-up" data-delay="300" style="margin-bottom: 2rem;">A multifunctional application featuring sound conversion, media downloader, and system utility tools.</p>
-            
-            <div class="project-actions anim-fade-up" data-delay="400">
-                <a href="https://github.com/JustSEMI/vortex-tools" target="_blank" class="btn-outline">
-                    <i class="fab fa-github"></i> View Repository
-                </a>
-            </div>
-
-            <div class="card-container">
-                <div class="card anim-fade-up" data-delay="100">
-                    <h3>IMAGE</h3>
-                    <p>[+] Background Remover</p>
-                    <p>[+] Upscaler</p>
-                    <p>[+] Converter</p>
-                    <p>[+] Watermark</p>
-                </div>
-                <div class="card anim-fade-up" data-delay="200">
-                    <h3>DOCUMENT</h3>
-                    <p>[+] Converter PDF</p>
-                    <p>[+] Converter DOCX</p>
-                </div>
-                <div class="card anim-fade-up" data-delay="300">
-                    <h3>AUDIO</h3>
-                    <p>[+] Converter MP3</p>
-                    <p>[+] Converter WAV</p>
-                    <p>[+] Converter FLAC</p>
-                    <p>[+] Converter OGG</p>
-                </div>
-                <div class="card anim-fade-up" data-delay="400">
-                    <h3>DOWNLOADER</h3>
-                    <p>[+] YouTube Video/Audio</p>
-                    <p>[+] Instagram Media</p>
-                    <p>[+] TikTok Downloader</p>
-                </div>
-                <div class="card anim-fade-up" data-delay="500">
-                    <h3>UTILITY</h3>
-                    <p>[+] Memory Manager</p>
-                    <p>[+] Process Manager</p>
-                    <p>[+] System Junk Cleaner</p>
-                </div>
-                <div class="card anim-fade-up" data-delay="600">
-                    <h3>OCR</h3>
-                    <p>[+] Image to Text</p>
-                    <p>[+] Text Extraction</p>
-                    <p>[+] Coming Soon...</p>
                 </div>
             </div>
         </section>
 
-        <section id="kontak">
-            <div class="project-header">
-                <h2 class="anim-fade-down" data-delay="100">GET IN</h2>
-                <h2 class="text-gradient anim-fade-up" data-delay="200">TOUCH</h2>
-            </div>
-            <div class="contact-container anim-fade-up" data-delay="300">
-                <div class="contact-info">
-                    <p class="hero-subtitle">Feel free to reach out for collaborations or just a friendly hello!</p>
-                    <div class="social-links">
-                        <a href="https://github.com/JustSEMI" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/semii.fht" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
-                        <a href="https://open.spotify.com/user/312x2wjkk2yqzmli5pal3xhfdlwu?si=b10c08cf5d584e98" target="_blank" class="social-btn"><i class="fab fa-spotify"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
+    <footer id="footer" class="footer-section">
+        <div class="container">
 
-    <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+            <div class="footer-top">
 
-    <footer class="glass-footer">
-        <p>© 2026 Samuel.</p>
-        <p>dibuat dengan sepenuh hati ;3</p>
+                <div class="footer-brand">
+                    <h2 class="footer-logo">СЕМИ</h2>
+                </div>
+
+                <div class="footer-links">
+
+                    <div class="footer-col">
+                        <h4>KARYA</h4>
+                        <a href="https://github.com/JustSEMI/_kotaku" target="_blank">KOTAKU (IoT)</a>
+                        <a href="https://github.com/JustSEMI/vortex-tools" target="_blank">Vortex-Tools (Utilities)</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>SKILLS</h4>
+                        <a href="#">Python</a>
+                        <a href="#">HTML/CSS/JS</a>
+                        <a href="#">C++</a>
+                        <a href="#">Lua</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>CONTACT</h4>
+                        <a href="mailto:samuel.fht@outlook.com">Email</a>
+                        <a href="https://github.com/JustSEMI" target="_blank">GitHub</a>
+                        <a href="" target="_blank">LinkedIn</a>
+                        <a href="https://discordapp.com/users/773408954352009216" target="_blank">Discord</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Samuel. Hak Cipta Dilindungi.</p>
+                <div class="legal-links">
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat & Ketentuan</a>
+                </div>
+            </div>
+
+        </div>
     </footer>
 
-    <script src="https://unpkg.com/lenis@1.1.2/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-    <script src="script.js" defer></script>
 </body>
+<button id="theme-toggle" class="theme-toggle" aria-label="Ganti Tema">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+</button>
+<button id="mute-toggle" class="theme-toggle mute-toggle" aria-label="Mute Audio">
+    <svg id="speaker-on" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+    </svg>
+
+    <svg id="speaker-off" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <line x1="23" y1="9" x2="17" y2="15"></line>
+        <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
+</button>
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+    });
+</script>
+<script src="/js/app.boot.js"></script>
+<script src="/js/app.theme.js"></script>
+<script src="/js/app.nav.js"></script>
+<script src="/js/lib.lenis.js"></script>
+
 </html>
