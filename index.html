@@ -10,13 +10,11 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <link rel="stylesheet" href="/css/base-global.css">
-    <link rel="stylesheet" href="/css/cmp.nav.css">
+    <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/main/view.hero.css">
     <link rel="stylesheet" href="/css/main/view.about.css">
     <link rel="stylesheet" href="/css/main/view.projects.css">
-    <link rel="stylesheet" href="/css/cmp.footer.css">
-    <link rel="stylesheet" href="/css/base-responsive.css">
+    <link rel="stylesheet" href="/css/responsive.css">
     <title>СЕМИ</title>
 </head>
 
@@ -125,8 +123,10 @@
 
                 <div class="project-grid">
 
-                    <a href="https://github.com/JustSEMI/_kotaku" class="project-card" data-aos="fade-up"
-                        data-aos-delay="100" target="_blank">
+                    <a href="https://github.com/JustSEMI/_kotaku" class="project-card tilt-card" data-tilt
+                        data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000" data-tilt-scale="1.05"
+                        data-tilt-glare="true" data-tilt-max-glare="0.3" data-aos="fade-up" data-aos-delay="100"
+                        target="_blank">
                         <div class="project-header">
                             <h3>KOTAKU</h3>
                             <div class="header-badges">
@@ -145,8 +145,10 @@
                         </div>
                     </a>
 
-                    <a href="https://github.com/JustSEMI/vortex-tools" class="project-card" data-aos="fade-up"
-                        data-aos-delay="200" target="_blank">
+                    <a href="https://github.com/JustSEMI/vortex-tools" class="project-card tilt-card" data-tilt
+                        data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000" data-tilt-scale="1.05"
+                        data-tilt-glare="true" data-tilt-max-glare="0.3" data-aos="fade-up" data-aos-delay="200"
+                        target="_blank">
                         <div class="project-header">
                             <h3>Vortex-Tools</h3>
                             <div class="header-badges">
@@ -204,6 +206,15 @@
                 </div>
             </div>
 
+            <div id="xray-trigger" title="Toggle Blueprint Mode">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                    <polyline points="2 17 12 22 22 17" />
+                    <polyline points="2 12 12 17 22 12" />
+                </svg>
+            </div>
+
             <div class="footer-bottom">
                 <p>&copy; 2026 Samuel. Hak Cipta Dilindungi.</p>
                 <div class="legal-links">
@@ -237,6 +248,7 @@
         <line x1="17" y1="9" x2="23" y2="15"></line>
     </svg>
 </button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -247,8 +259,5 @@
     });
 </script>
 <script src="/js/app.boot.js"></script>
-<script src="/js/app.theme.js"></script>
-<script src="/js/app.nav.js"></script>
-<script src="/js/lib.lenis.js"></script>
 
 </html>

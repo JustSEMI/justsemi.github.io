@@ -73,6 +73,20 @@
     transform: translateY(-4px);
 }
 
+.tilt-card {
+    will-change: transform;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+}
+
+.tilt-card img, 
+.tilt-card h3, 
+.tilt-card p, 
+.tilt-card a {
+    transform: translateZ(40px); 
+}
+
 .project-header {
     display: flex;
     justify-content: space-between;
