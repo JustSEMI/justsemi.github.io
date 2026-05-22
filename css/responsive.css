@@ -1,71 +1,210 @@
 @media screen and (max-width: 768px) {
+    /* NAVIGATION */
     .nav {
-        padding: 10px 15px;
+        top: 10px;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 92% !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        padding: 0 12px !important;
+        height: 52px;
     }
     
-    .nav-links {
-        gap: 10px;
+    .nav.is-scrolled {
+        top: 8px;
+        height: 48px;
     }
     
-    .nav-link, .nav a {
-        font-size: 13px;
+    .nav a {
+        font-size: 12px;
+        padding: 4px 10px;
     }
 
+    .nav-center {
+        display: none; /* Hide logo in center to prevent clutter on mobile */
+    }
+
+    /* HERO */
     .hero-title {
-        font-size: 42px;
-        line-height: 1.1;
+        font-size: 38px;
+        line-height: 1.2;
+        letter-spacing: -1px;
     }
+    
     .hero-subtitle {
-        font-size: 24px;
-    }
-    .lead-text {
-        font-size: 16px;
+        font-size: 15px;
+        margin-bottom: 30px;
         padding: 0 10px;
     }
-    .hero-section {
-        padding-bottom: 140px;
+
+    .hero-badge-container {
+        margin-bottom: 20px;
     }
 
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        padding: 0 20px;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* ABOUT & CODE WINDOW */
     .about-split {
         flex-direction: column;
         gap: 40px;
     }
+    
     .about-left, .about-right {
         width: 100%;
-        padding-right: 0;
+    }
+
+    .about-left .section-title {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .about-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
     .window-body {
         padding: 16px;
     }
+    
     .window-body code {
         font-size: 12px; 
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
+    /* GITHUB CONTRIBUTION WIDGET */
+    .github-wrapper {
+        padding: 16px;
+        margin-top: 30px;
     }
 
-    .footer-grid {
+    .github-header h4 {
+        font-size: 14px;
+    }
+
+    /* PROJECTS */
+    .projects-section {
+        padding: 60px 20px 80px 20px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .section-description {
+        font-size: 14px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .project-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* FOOTER */
+    .footer-section {
+        padding: 40px 20px 20px 20px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-brand {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .footer-logo {
+        margin-bottom: 8px;
+    }
+
+    .footer-links {
         gap: 30px;
-        text-align: left; 
     }
 
+    .footer-col h4 {
+        margin-bottom: 16px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .legal-links {
+        justify-content: center;
+    }
+
+    /* WIDGETS (SPOTIFY, THEME, XRAY) */
     .theme-toggle {
         width: 44px;
         height: 44px;
         bottom: 20px;
+        right: 20px;
     }
-    #mute-toggle {
+
+    .spotify-widget {
+        width: 200px;
+        left: 20px;
+        bottom: 20px;
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    .spotify-disc-container {
+        width: 30px;
+        height: 30px;
+    }
+
+    .spotify-title {
+        font-size: 11px;
+    }
+
+    .spotify-artist {
+        font-size: 9px;
+    }
+
+    .spotify-control-btn {
+        width: 24px;
+        height: 24px;
+    }
+
+    #xray-trigger {
         width: 44px;
         height: 44px;
-        bottom: 74px !important;
-        right: 30px !important;
+        left: 20px;
+        bottom: 84px;
     }
-    
-    .scroll-indicator {
-        display: none;
-    } 
+
+    /* PRELOADER */
+    .greeting-text {
+        font-size: 2.5rem !important;
+        gap: 8px !important;
+        letter-spacing: -1px !important;
+    }
+
+    .preloader-bar-bg {
+        width: 120px !important;
+    }
 }

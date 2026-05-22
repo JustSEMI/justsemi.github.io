@@ -1,34 +1,33 @@
 /* PROJECTS SECTION */
 .projects-section {
     position: relative;
-    
     display: flex;
-    height: 75vh;
+    min-height: 75vh;
     align-items: center;
     justify-content: center;
-    
     padding: 100px 20px 120px 20px;
-    background-color: transparent;
+    background-color: var(--bg-primary);
     z-index: 1;
 }
+
 .projects-section::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: -1;
-    
     background-image: 
-        linear-gradient(to right, #e8e8e8 1px, transparent 1px),
-        linear-gradient(to bottom, #e8e8e8 1px, transparent 1px);
+        linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
     background-size: 40px 40px;
-
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
+    mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
+    opacity: 0.6;
 }
 
 .container {
     max-width: 1000px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .section-header {
@@ -36,40 +35,43 @@
 }
 
 .section-title {
-    font-size: 32px;
-    font-weight: 700;
-    color: #111111;
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--text-primary);
     letter-spacing: -1px;
-    margin-bottom: 12px;
+    margin: 0 0 12px 0;
 }
 
 .section-description {
-    font-size: 18px;
-    color: #666666;
+    font-size: 16px;
+    color: var(--text-secondary);
     max-width: 600px;
+    margin: 0;
+    line-height: 1.6;
 }
 
 /* PROJECT CARDS */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
 }
 
 .project-card {
-    display: block;
-    background-color: #ffffff;
-    border: 1px solid #eaeaea;
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
     padding: 28px;
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--card-shadow);
 }
 
 .project-card:hover {
-    border-color: #d1d1d1;
-    box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+    border-color: var(--accent);
+    box-shadow: var(--card-shadow-hover);
     transform: translateY(-4px);
 }
 
@@ -80,11 +82,8 @@
     position: relative;
 }
 
-.tilt-card img, 
-.tilt-card h3, 
-.tilt-card p, 
-.tilt-card a {
-    transform: translateZ(40px); 
+.tilt-card * {
+    transform: translateZ(30px); 
 }
 
 .project-header {
@@ -97,9 +96,10 @@
 
 .project-header h3 {
     font-size: 20px;
-    color: #111111;
+    color: var(--text-primary);
     font-weight: 700;
     margin: 0;
+    letter-spacing: -0.5px;
 }
 
 .header-badges {
@@ -112,18 +112,27 @@
 /* BADGE */
 .badge {
     font-size: 11px;
-    font-weight: 600;
-    background-color: #f0f0f0;
-    color: #555555;
-    padding: 4px 8px;
-    border-radius: 4px;
+    font-weight: 700;
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    letter-spacing: 0.2px;
+}
+
+/* Highlight Under Development or specific statuses if wanted */
+.badge:nth-child(2) {
+    border-color: rgba(163, 230, 53, 0.3);
+    color: var(--accent);
 }
 
 .project-desc {
-    font-size: 15px;
-    color: #555555;
+    font-size: 14px;
+    color: var(--text-secondary);
     line-height: 1.6;
-    margin-bottom: 24px;
+    margin: 0 0 24px 0;
+    flex-grow: 1;
 }
 
 /* TAGS */
@@ -131,14 +140,38 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    margin-top: auto;
 }
 
 .project-tags span {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
-    color: #1a1a1a;
-    background-color: #f7f7f7;
-    border: 1px solid #eaeaea;
+    color: var(--text-primary);
+    background-color: var(--badge-bg);
+    border: 1px solid var(--border-color);
     padding: 4px 10px;
     border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.project-card:hover .project-tags span {
+    border-color: var(--border-hover);
+}
+
+/* Coming Soon project card styling */
+.project-card.coming-soon {
+    border-style: dashed;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.project-card.coming-soon:hover {
+    opacity: 1;
+    border-color: #f59e0b;
+    box-shadow: 0 8px 32px rgba(245, 158, 11, 0.15);
+}
+
+.project-card.coming-soon .header-badges span:nth-child(2) {
+    border-color: rgba(245, 158, 11, 0.3) !important;
+    color: #f59e0b !important;
 }
