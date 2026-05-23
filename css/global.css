@@ -290,6 +290,22 @@ body {
     transition: all 0.3s ease;
 }
 
+.nav-logo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+}
+
+.nav-logo-latin {
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
 .nav:hover .nav-center .nav-text {
     text-shadow: 0 0 20px rgba(163, 230, 53, 0.15);
 }
@@ -518,7 +534,18 @@ body {
     font-weight: 800;
     color: var(--text-primary);
     letter-spacing: -0.5px;
-    margin: 0 0 12px 0;
+    margin: 0 0 4px 0;
+}
+
+.footer-logo-latin {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 12px;
 }
 
 .footer-links {
