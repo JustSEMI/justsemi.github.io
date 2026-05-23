@@ -90,28 +90,28 @@ document.addEventListener('DOMContentLoaded', () => {
     window.music.loop = true;
     window.music.volume = 0.3;
 
-    // Spotify Widget Elements
-    const spotifyWidget = document.getElementById('spotify-widget');
-    const spotifyPlayBtn = document.getElementById('spotify-play-btn');
-    const playIcon = document.getElementById('spotify-play-icon');
-    const pauseIcon = document.getElementById('spotify-pause-icon');
-    const spotifyTitle = document.getElementById('spotify-title');
-    const spotifyArtist = document.getElementById('spotify-artist');
+    // Music Widget Elements
+    const musicWidget = document.getElementById('music-widget');
+    const musicPlayBtn = document.getElementById('music-play-btn');
+    const playIcon = document.getElementById('music-play-icon');
+    const pauseIcon = document.getElementById('music-pause-icon');
+    const musicTitle = document.getElementById('music-title');
+    const musicArtist = document.getElementById('music-artist');
 
-    // Update track details in Spotify widget
-    const updateSpotifyWidget = () => {
-        if (!spotifyTitle || !spotifyArtist) return;
+    // Update track details in Music widget
+    const updateMusicWidget = () => {
+        if (!musicTitle || !musicArtist) return;
         const filename = selectedTrack.substring(selectedTrack.lastIndexOf('/') + 1);
         const trackTitle = filename.replace('.webm', '').replace('%20', ' ');
-        spotifyTitle.textContent = trackTitle;
-        spotifyArtist.textContent = "JustSEMI's Choice";
+        musicTitle.textContent = trackTitle;
+        musicArtist.textContent = "JustSEMI's Choice";
     };
 
-    updateSpotifyWidget();
+    updateMusicWidget();
 
     // Toggle play/pause
-    if (spotifyPlayBtn) {
-        spotifyPlayBtn.addEventListener('click', () => {
+    if (musicPlayBtn) {
+        musicPlayBtn.addEventListener('click', () => {
             if (music.paused) {
                 music.play().catch(err => console.log("Playback prevented:", err));
             } else {
@@ -122,13 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Sync play state to UI
     music.addEventListener('play', () => {
-        if (spotifyWidget) spotifyWidget.classList.add('is-playing');
+        if (musicWidget) musicWidget.classList.add('is-playing');
         if (playIcon) playIcon.style.display = 'none';
         if (pauseIcon) pauseIcon.style.display = 'block';
     });
 
     music.addEventListener('pause', () => {
-        if (spotifyWidget) spotifyWidget.classList.remove('is-playing');
+        if (musicWidget) musicWidget.classList.remove('is-playing');
         if (playIcon) playIcon.style.display = 'block';
         if (pauseIcon) pauseIcon.style.display = 'none';
     });

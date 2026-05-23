@@ -156,7 +156,7 @@
         justify-content: center;
     }
 
-    /* WIDGETS (SPOTIFY, THEME, XRAY) */
+    /* WIDGETS (MUSIC, THEME, XRAY) */
     .theme-toggle {
         width: 44px;
         height: 44px;
@@ -164,7 +164,7 @@
         right: 20px;
     }
 
-    .spotify-widget {
+    .music-widget {
         width: 200px;
         left: 20px;
         bottom: 20px;
@@ -172,20 +172,20 @@
         gap: 8px;
     }
 
-    .spotify-disc-container {
+    .music-disc-container {
         width: 30px;
         height: 30px;
     }
 
-    .spotify-title {
+    .music-title {
         font-size: 11px;
     }
 
-    .spotify-artist {
+    .music-artist {
         font-size: 9px;
     }
 
-    .spotify-control-btn {
+    .music-control-btn {
         width: 24px;
         height: 24px;
     }
