@@ -18,9 +18,10 @@
     z-index: -1;
     background-image: radial-gradient(var(--border-color) 1.5px, transparent 0);
     background-size: 32px 32px;
-    -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
-    mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
     opacity: 0.7;
+    pointer-events: none;
 }
 
 .hero-container {

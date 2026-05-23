@@ -380,8 +380,14 @@ body {
     z-index: 999;
     box-shadow: var(--card-shadow);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    width: 250px;
+    width: 290px;
     color: var(--text-primary);
+}
+
+.music-widget.is-hidden {
+    transform: translateX(-120%);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .music-widget:hover {
@@ -450,6 +456,7 @@ body {
 .music-controls {
     display: flex;
     align-items: center;
+    gap: 4px;
 }
 
 .music-control-btn {
@@ -508,12 +515,98 @@ body {
     100% { transform: rotate(360deg); }
 }
 
+.music-close-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 10;
+    padding: 0;
+}
+
+.music-widget:hover .music-close-btn {
+    opacity: 0.6;
+}
+
+.music-widget:hover .music-close-btn:hover {
+    opacity: 1;
+    color: var(--accent);
+    background: var(--nav-a-hover-bg);
+}
+
+.music-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--nav-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 998;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.music-toggle-btn.is-visible {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.music-toggle-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+.music-toggle-btn.is-playing .music-note-icon {
+    animation: spin 6s linear infinite;
+}
+
 /* FOOTER */
 .footer-section {
     background-color: var(--bg-secondary);
     padding: 60px 20px 30px 20px;
     font-size: 14px;
     border-top: 1px solid var(--border-color);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.footer-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    background-image: radial-gradient(var(--border-color) 1.5px, transparent 0);
+    background-size: 32px 32px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 15%, transparent 70%);
+    mask-image: radial-gradient(ellipse at center, black 15%, transparent 70%);
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 .footer-top {
@@ -634,24 +727,24 @@ body {
 }
 
 body.xray-mode {
-    background-color: #000b14 !important;
+    background-color: #000000 !important;
     background-image: 
-        linear-gradient(rgba(0, 123, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 123, 255, 0.1) 1px, transparent 1px) !important;
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px) !important;
     background-size: 30px 30px !important;
 }
 
 body.xray-mode * {
     transition: all 0.8s ease !important;
-    outline: 1px solid rgba(0, 123, 255, 0.2) !important;
+    outline: 2px solid rgba(255, 255, 255, 0.12) !important;
     background-color: transparent !important;
-    color: #8ccfff !important;
+    color: #94a3b8 !important;
     box-shadow: none !important;
-    border-color: rgba(0, 123, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 body.xray-mode #xray-trigger {
-    background: rgba(0, 123, 255, 0.2) !important;
-    color: #00e5ff !important;
-    border: 1px solid #00e5ff !important;
+    background: rgba(56, 189, 248, 0.1) !important;
+    color: #38bdf8 !important;
+    border: 1px solid #38bdf8 !important;
 }

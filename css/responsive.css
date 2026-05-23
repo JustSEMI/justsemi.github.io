@@ -165,7 +165,7 @@
     }
 
     .music-widget {
-        width: 200px;
+        width: 230px;
         left: 20px;
         bottom: 20px;
         padding: 8px 10px;
@@ -190,11 +190,33 @@
         height: 24px;
     }
 
+    .music-toggle-btn {
+        width: 44px;
+        height: 44px;
+        bottom: 20px;
+        left: 20px;
+    }
+
     #xray-trigger {
         width: 44px;
         height: 44px;
         left: 20px;
         bottom: 84px;
+    }
+
+    /* ACTIVITY & STATS SECTION */
+    .activity-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .wakatime-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .waka-setup-tip {
+        grid-column: span 1;
     }
 
     /* PRELOADER */
