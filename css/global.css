@@ -26,6 +26,8 @@
     --btn-secondary-border: #d1d1d1;
     --badge-bg: #f0f0f0;
     --badge-text: #555555;
+    --nav-scrolled-bg: rgba(255, 255, 255, 0.85);
+    --nav-scrolled-shadow: rgba(0, 0, 0, 0.08);
 }
 
 body.dark-mode {
@@ -50,6 +52,8 @@ body.dark-mode {
     --btn-secondary-border: rgba(255, 255, 255, 0.15);
     --badge-bg: #1e1e20;
     --badge-text: #d1d1d1;
+    --nav-scrolled-bg: rgba(9, 9, 11, 0.85);
+    --nav-scrolled-shadow: rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar {
@@ -219,16 +223,12 @@ body {
 }
 
 .nav.is-scrolled {
-    background-color: rgba(9, 9, 11, 0.85);
+    background-color: var(--nav-scrolled-bg);
     border-color: rgba(163, 230, 53, 0.2);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 15px rgba(163, 230, 53, 0.05);
+    box-shadow: 0 10px 40px var(--nav-scrolled-shadow), 0 0 15px rgba(163, 230, 53, 0.05);
     height: 52px;
     top: 12px;
     padding: 0 20px;
-}
-
-body.dark-mode .nav.is-scrolled {
-    background-color: rgba(9, 9, 11, 0.85);
 }
 
 .nav-left, .nav-right {

@@ -127,6 +127,16 @@
     color: var(--accent);
 }
 
+.project-card.discontinued .badge:nth-child(2) {
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.project-card.discontinued:hover {
+    border-color: #ef4444;
+    box-shadow: 0 12px 32px rgba(239, 68, 68, 0.15);
+}
+
 .project-desc {
     font-size: 14px;
     color: var(--text-secondary);
