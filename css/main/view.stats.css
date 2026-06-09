@@ -165,8 +165,8 @@
     letter-spacing: 0.5px;
 }
 
-/* TOP LANGUAGES & WAKATIME */
-.top-languages-section h4, .wakatime-languages h4 {
+/* TOP LANGUAGES */
+.top-languages-section h4 {
     font-size: 12px;
     font-weight: 700;
     color: var(--text-primary);
@@ -189,7 +189,7 @@
     transition: width 0.5s ease;
 }
 
-.languages-legend, .waka-legend {
+.languages-legend {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
@@ -228,125 +228,6 @@
     border-color: var(--accent);
 }
 
-/* WAKATIME STATS */
-.wakatime-stats {
-    width: 100%;
-}
-
-.wakatime-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-    align-items: center;
-}
-
-.waka-info {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    margin-bottom: 16px;
-}
-
-.waka-info:last-child {
-    margin-bottom: 0;
-}
-
-.waka-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: block;
-    margin-bottom: 4px;
-}
-
-.waka-value {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--text-primary);
-}
-
-.waka-setup-tip {
-    grid-column: span 2;
-    font-size: 10px;
-    color: var(--text-secondary);
-    font-style: italic;
-    margin: 16px 0 0 0;
-    text-align: center;
-    opacity: 0.7;
-}
-
-.loading-spinner, .no-data {
-    padding: 30px;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 13px;
-    font-style: italic;
-}
-
-.loading-spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.loading-spinner::before {
-    content: '';
-    width: 16px;
-    height: 16px;
-    border: 2px solid var(--border-color);
-    border-top-color: var(--accent);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-}
-
-/* SKELETON LOADING EFFECTS */
-.skeleton {
-    display: inline-block;
-    height: 1.2em;
-    width: 60px;
-    background: linear-gradient(-90deg, var(--bg-secondary) 0%, var(--border-color) 50%, var(--bg-secondary) 100%);
-    background-size: 400% 400%;
-    animation: pulse-skeleton 1.5s ease-in-out infinite;
-    border-radius: 4px;
-}
-
-@keyframes pulse-skeleton {
-    0% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* WAKATIME CONFIG / EMPTY STATE */
-.waka-empty-state {
-    grid-column: span 2;
-    padding: 24px;
-    text-align: center;
-    border: 1.5px dashed var(--border-color);
-    border-radius: 12px;
-    background-color: var(--bg-secondary);
-}
-
-.waka-empty-state-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 6px 0;
-}
-
-.waka-empty-state-desc {
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin: 0;
-    line-height: 1.5;
-}
 
 /* GITHUB CONTRIBUTIONS WIDGET */
 .github-wrapper {

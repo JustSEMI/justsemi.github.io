@@ -64,14 +64,13 @@
     height: 8px;
     background-color: var(--accent);
     border-radius: 50%;
-    box-shadow: 0 0 8px var(--accent);
+    box-shadow: none;
     animation: status-pulse 2s infinite;
 }
 
 @keyframes status-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(163, 230, 53, 0.5); }
-    70% { box-shadow: 0 0 0 6px rgba(163, 230, 53, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(163, 230, 53, 0); }
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
 }
 
 .about-right {
@@ -142,11 +141,11 @@
     letter-spacing: 0;
 }
 
-.keyword { color: #f43f5e; font-weight: 500; }
-.class-name { color: var(--accent); }
-.function { color: #38bdf8; }
-.variable { color: #f4f4f5; }
-.string { color: #fbbf24; }
+.keyword { color: var(--token-keyword); font-weight: 500; }
+.class-name { color: var(--token-class); }
+.function { color: var(--token-function); }
+.variable { color: var(--token-variable); }
+.string { color: var(--token-string); }
 
 /* DISCORD LANYARD CARD */
 .discord-card {
@@ -167,7 +166,7 @@
 }
 
 .discord-card:hover {
-    border-color: var(--accent);
+    border-color: var(--border-hover);
     box-shadow: var(--card-shadow-hover);
 }
 
@@ -253,7 +252,7 @@
     margin-top: 2px;
 }
 
-/* Activity section */
+
 .discord-activity {
     border-top: 1px solid var(--border-color);
     padding-top: 12px;
@@ -305,7 +304,7 @@
     text-overflow: ellipsis;
 }
 
-/* Skeleton animation */
+
 .discord-card .skeleton-circle {
     width: 48px;
     height: 48px;
