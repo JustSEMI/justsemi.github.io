@@ -14,7 +14,7 @@ const CONFIG = {
 
     // counter API
     // bebas mau pakai namespace apa, mau nama pribadi ata random string juga bisa
-    counterNamespace: 'SEMIII',
+    counterNamespace: 'QNQzsQM7mSZynOzq4tIlD9EhY1KcVXXP', // ini pake random string, bukan API nya asli awoakwaokwoawka
 
     // playlist
     // Masukkan path lagu yang ada di folder assets/music/
