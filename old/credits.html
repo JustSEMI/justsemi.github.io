@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="indonesian">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="css/global.css">
+    <title>Kredit Aset | СЕМИ</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            background-color: var(--bg-primary);
+        }
+        .credits-container {
+            width: 100%;
+            max-width: 650px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        .credits-container:hover {
+            border-color: var(--accent);
+            box-shadow: var(--card-shadow-hover);
+        }
+        .header {
+            margin-bottom: 30px;
+        }
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: color 0.2s ease, transform 0.2s ease;
+            gap: 6px;
+        }
+        .btn-back:hover {
+            color: var(--accent);
+            transform: translateX(-4px);
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 0;
+        }
+        .asset-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 30px;
+        }
+        .asset-item {
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .asset-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .asset-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .asset-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 10px 0;
+        }
+        .asset-desc a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .asset-desc a:hover {
+            text-decoration: underline;
+        }
+        .badge {
+            display: inline-block;
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .badge.accent-badge {
+            background-color: var(--accent-glow);
+            color: var(--accent);
+            border-color: rgba(163, 230, 53, 0.2);
+        }
+        .fair-use-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .fair-use-box strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <div class="credits-container">
+        <div class="header">
+            <a href="index.html" class="btn-back">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Kembali ke Beranda
+            </a>
+            <h1>Kredit Aset</h1>
+            <p class="subtitle">Daftar lisensi, pustaka, dan sumber daya pihak ketiga yang digunakan dalam website ini.</p>
+        </div>
+
+        <div class="asset-list">
+            <div class="asset-item">
+                <div class="asset-title">Dennis Wilson - Rainbows (Audio)</div>
+                <p class="asset-desc">Musik latar belakang yang dapat diputar secara opsional melalui widget pemutar musik di website. Sumber lagu dapat diakses melalui tautan <a href="https://youtu.be/PJKkJ8i66sw" target="_blank">YouTube Dennis Wilson - Rainbows</a>.</p>
+                <div>
+                    <span class="badge accent-badge">Audio Asset</span>
+                    <span class="badge">Non-Komersial</span>
+                    <span class="badge">Atribusi Hak Cipta</span>
+                </div>
+            </div>
+
+            <div class="asset-item">
+                <div class="asset-title">Ike & Tina Turner - Glory, Glory (Audio)</div>
+                <p class="asset-desc">Musik latar belakang tambahan yang dapat diputar secara opsional melalui widget pemutar musik di website. Sumber lagu dapat diakses melalui tautan <a href="https://youtu.be/gUuCQv5EJhM" target="_blank">YouTube Ike & Tina Turner - Glory, Glory</a>.</p>
+                <div>
+                    <span class="badge accent-badge">Audio Asset</span>
+                    <span class="badge">Non-Komersial</span>
+                    <span class="badge">Atribusi Hak Cipta</span>
+                </div>
+            </div>
+
+            <div class="asset-item">
+                <div class="asset-title">Outfit & JetBrains Mono (Tipografi)</div>
+                <p class="asset-desc">Font sans-serif modern dan font monospaced premium yang dimuat secara gratis dari repositori Google Fonts.</p>
+                <div>
+                    <span class="badge">Google Fonts</span>
+                    <span class="badge">SIL Open Font License</span>
+                </div>
+            </div>
+
+            <div class="asset-item">
+                <div class="asset-title">Vanilla Tilt, Lenis, & AOS (Interaktivitas)</div>
+                <p class="asset-desc">Pustaka Javascript untuk menambahkan efek kemiringan kartu 3D, animasi gulir halus, dan efek transisi kemunculan konten.</p>
+                <div>
+                    <span class="badge">MIT License</span>
+                    <span class="badge">External Libs</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="fair-use-box">
+            <strong>Pernyataan Hak Cipta & Penggunaan Wajar (Fair Use)</strong>
+            Seluruh berkas audio/musik yang digunakan dalam portofolio ini adalah milik dari pemilik hak cipta dan artis masing-masing. Penggunaan aset musik ini murni ditujukan untuk tujuan evaluasi non-komersial, edukasi, dan demonstrasi keahlian teknis (portofolio). Tidak ada pelanggaran hak cipta yang disengaja. Jika Anda adalah pemilik hak cipta resmi dan ingin aset Anda dihapus dari website ini, silakan hubungi saya melalui email kontak.
+        </div>
+    </div>
+</body>
+</html>

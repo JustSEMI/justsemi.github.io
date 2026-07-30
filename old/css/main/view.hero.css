@@ -1,0 +1,182 @@
+/* Stomic by Niskala */
+@font-face {
+    font-family: 'Stomic';
+    src: url('/assets/fonts/Stomic.woff2') format('woff2'),
+         url('/assets/fonts/Stomic.woff') format('woff'),
+         url('/assets/fonts/Stomic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* HERO SECTION */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15vh 8vw 0 8vw;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+    z-index: 1;
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    background-image: radial-gradient(var(--border-color) 1.5px, transparent 0);
+    background-size: 32px 32px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.hero-tag {
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+}
+
+.hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    animation: blink-dot 2s infinite;
+}
+
+@keyframes blink-dot {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+.hero-badge-text {
+    font-family: var(--font-sans);
+}
+
+.hero-title {
+    font-family: 'Stomic', sans-serif;
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -0.01em;
+    font-size: 13vw;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    font-weight: 900;
+}
+
+body.dark-mode .hero-title {
+    color: #ffffff;
+}
+
+body:not(.dark-mode) .hero-title {
+    color: #111111;
+}
+
+.hero-title.stroke {
+    color: transparent;
+    margin-top: -3vw;
+    font-weight: normal;
+}
+
+body.dark-mode .hero-title.stroke {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+}
+
+body:not(.dark-mode) .hero-title.stroke {
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.15);
+}
+
+.hero-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 6rem;
+    align-items: flex-end;
+    z-index: 2;
+}
+
+.scroll-indicator {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.15em;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: static;
+    transform: none;
+    opacity: 1;
+}
+
+.scroll-line {
+    width: 60px;
+    height: 1px;
+    background-color: var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-line::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--accent);
+    animation: scrollSlide 2s infinite ease-in-out;
+}
+
+@keyframes scrollSlide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+}
+
+.hero-meta {
+    max-width: 420px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    text-align: justify;
+    font-weight: 300;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 15vh 1.5rem 4rem 1.5rem;
+    }
+    .tech-lines {
+        left: 1.5rem;
+        width: calc(100% - 3rem);
+    }
+    .hero-title {
+        font-size: 16vw;
+    }
+    .hero-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        margin-top: 4rem;
+    }
+    .hero-meta {
+        max-width: 100%;
+        text-align: left;
+    }
+}
