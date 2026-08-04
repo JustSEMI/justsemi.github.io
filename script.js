@@ -940,19 +940,7 @@ async function initViewCounter() {
         const namespace = typeof CONFIG !== 'undefined' && CONFIG.counterNamespace ? CONFIG.counterNamespace : 'SEMIII';
         const viewCountElement = document.getElementById('view-count');
 
-        const now = Date.now();
-        const lastVisit = localStorage.getItem('lastVisitTimestamp');
-        const cooldown = 60 * 60 * 1000;
-
-        if (lastVisit && (now - parseInt(lastVisit)) < cooldown) {
-            const lastCount = localStorage.getItem('lastCount');
-            if (viewCountElement && lastCount) {
-                viewCountElement.textContent = parseInt(lastCount).toLocaleString();
-            }
-            return;
-        }
-
-        localStorage.setItem('lastVisitTimestamp', now.toString());
+        // Panggil API langsung tanpa cooldown
         const response = await fetch(`https://api.counterapi.dev/v1/${namespace}/visits/up`);
         const data = await response.json();
 
