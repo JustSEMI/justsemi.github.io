@@ -26,7 +26,7 @@ const CONFIG = {
 
     // social media links
     socialLinks: [
-        { name: 'Website', icon: 'ph-globe', url: './project/website/' },
+        { name: 'Website', icon: 'ph ph-globe', url: './project/website' },
         { name: 'Github', icon: 'ph-fill ph-github-logo', url: 'https://github.com/JustSEMI' },
         { name: 'Discord', icon: 'ph-fill ph-discord-logo', url: 'http://discordapp.com/users/773408954352009216' },
         { name: 'Steam', icon: 'ph-fill ph-steam-logo', url: 'https://steamcommunity.com/profiles/76561199162257006/' },
