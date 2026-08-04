@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>whoami | @bluezex</title>
+    <title>@bluezex</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -28,6 +28,7 @@
 
             <div class="profile-header-horizontal">
                 <div class="avatar-container">
+                    <canvas id="avatar-visualizer" class="avatar-visualizer"></canvas>
                     <img id="lanyard-avatar"
                         src="https://cdn.discordapp.com/avatars/773408954352009216/865fc138a9e742a2f2d7e9b154144717.png"
                         alt="Avatar" class="avatar">
@@ -78,21 +79,8 @@
                 </div>
             </div>
 
-            <div class="social-links-flat">
-                <a href="https://me.sfht.space/old" target="_blank" class="social-btn-flat" title="Website"><i
-                        class="ph ph-globe"></i></a>
-                <a href="https://github.com/JustSEMI" target="_blank" class="social-btn-flat" title="Github"><i
-                        class="ph-fill ph-github-logo"></i></a>
-                <a href="http://discordapp.com/users/773408954352009216" target="_blank" class="social-btn-flat"
-                    title="Discord"><i class="ph-fill ph-discord-logo"></i></a>
-                <a href="https://steamcommunity.com/profiles/76561199162257006/" target="_blank" class="social-btn-flat"
-                    title="Steam"><i class="ph-fill ph-steam-logo"></i></a>
-                <a href="https://open.spotify.com/user/312x2wjkk2yqzmli5pal3xhfdlwu" target="_blank"
-                    class="social-btn-flat" title="Spotify"><i class="ph-fill ph-spotify-logo"></i></a>
-                <a href="#" target="_blank" class="social-btn-flat" title="Instagram"><i
-                        class="ph-fill ph-instagram-logo"></i></a>
-                <a href="#" target="_blank" class="social-btn-flat" title="TikTok"><i
-                        class="ph-fill ph-tiktok-logo"></i></a>
+            <div class="social-links-flat" id="social-links-container">
+                <!-- Injected via JS -->
             </div>
             <div class="view-counter-flat">
                 <i class="ph-fill ph-eye"></i> <span id="view-count">...</span> Views
@@ -118,6 +106,9 @@
                     <div class="local-progress-container" id="local-progress-container">
                         <div class="local-progress-bar" id="local-progress-bar"></div>
                     </div>
+                    <div class="music-disclaimer" title="Music is for entertainment only. All rights belong to their respective owners.">
+                        © No copyright infringement intended.
+                    </div>
                 </div>
 
                 <div class="visualizer-time-wrapper">
@@ -128,8 +119,9 @@
                 </div>
             </div>
         </div>
-        <div class="location-pin">
-            <i class="ph-fill ph-map-pin"></i> <span>Indonesia, Java</span>
+        <div class="location-pin" id="location-pin-container" style="display: flex; gap: 15px; align-items: center;">
+            <div class="location-item" style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-map-pin"></i> <span>Indonesia, Java</span></div>
+            <div class="location-item timezone-item" id="timezone-widget" style="display: none; align-items: center; gap: 6px;"><i class="ph-fill ph-clock"></i> <span id="timezone-time">00:00:00</span></div>
         </div>
 
         <div class="volume-container">

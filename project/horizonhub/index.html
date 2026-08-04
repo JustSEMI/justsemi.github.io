@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HorizonHub | Roblox Script Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <header>
+                <h1>HorizonHub</h1>
+                <p class="subtitle">The simple Open Source Script Hub</p>
+            </header>
+
+            <div class="copy-section">
+                <div class="code-box">
+                    <code id="loadstring">loadstring(game:HttpGet("https://raw.githubusercontent.com/JustSEMI/HorizonHub/refs/heads/main/Loader.lua"))()</code>
+                </div>
+                <button id="copy-btn" class="copy-btn">
+                    <i class="ph-fill ph-copy"></i> COPY SCRIPT
+                </button>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <i class="ph-fill ph-rocket-launch"></i>
+                    <h3>Fast Execution</h3>
+                    <p>Highly optimized code for the best performance with zero lag.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="ph-fill ph-code"></i>
+                    <h3>Open Source</h3>
+                    <p>Fully transparent and community-driven. Feel free to contribute!</p>
+                </div>
+                <div class="feature-card">
+                    <i class="ph-fill ph-lock-open"></i>
+                    <h3>100% Keyless</h3>
+                    <p>No annoying Linkvertise or Discord verification. Just copy, paste, and execute instantly.</p>
+                </div>
+            </div>
+
+            <div class="games-section">
+                <button class="dropdown-btn" id="games-dropdown-btn">
+                    <h2>Supported Experiences</h2>
+                    <i class="ph-bold ph-caret-down"></i>
+                </button>
+                <div class="games-list-container" id="games-list">
+                    <div class="games-list">
+                        <a href="" target="_blank" class="game-card">
+                            <i class="ph-fill ph-code"></i>
+                            <span>Universal Aimbot & ESP</span>
+                        </a>
+                        <a href="https://www.roblox.com/games/128736949265057/Gakuran" target="_blank" class="game-card">
+                            <i class="ph-fill ph-code"></i>
+                            <span>Gakuran</span>
+                        </a>
+                        <a href="https://www.roblox.com/games/115681808123944/Throw-a-Coin" target="_blank" class="game-card">
+                            <i class="ph-fill ph-code"></i>
+                            <span>Throw a Coin</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <footer>
+                <div class="social-links">
+                    <a href="https://github.com/JustSEMI/HorizonHub" target="_blank" class="social-link"><i class="ph-fill ph-github-logo"></i></a>
+                    <a href="#" target="_blank" class="social-link"><i class="ph-fill ph-discord-logo"></i></a>
+                </div>
+                <p class="copyright">&copy; 2026 Horizon Hub, JustSEMI</p>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification">
+        <i class="ph-fill ph-check-circle"></i>
+        <span>Script copied to clipboard!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

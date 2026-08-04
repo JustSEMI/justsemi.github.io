@@ -1,0 +1,222 @@
+@media screen and (max-width: 768px) {
+    /* NAVIGATION */
+    .nav {
+        top: 0;
+        left: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        justify-content: space-between !important;
+        gap: 0 !important;
+        padding: 0 1.5rem !important;
+        height: 56px;
+        border-radius: 0;
+    }
+
+    .nav.is-scrolled {
+        top: 0;
+        height: 48px;
+    }
+
+    .nav a {
+        font-size: 10px;
+        padding: 4px 10px;
+        letter-spacing: 0.08em;
+    }
+
+    .nav-center {
+        display: none;
+    }
+
+    /* HERO */
+    .hero-title {
+        font-size: 16vw;
+        line-height: 0.85;
+        letter-spacing: -0.01em;
+        margin: 0;
+    }
+
+    .hero-subtitle {
+        font-size: 15px;
+        margin-bottom: 30px;
+        padding: 0 10px;
+    }
+
+    .hero-badge-container {
+        margin-bottom: 20px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        padding: 0 20px;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* ABOUT & CODE WINDOW */
+    .about-split {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .about-left, .about-right {
+        width: 100%;
+    }
+
+    .about-left .section-title {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .about-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .window-body {
+        padding: 16px;
+    }
+
+    .window-body code {
+        font-size: 12px;
+    }
+
+    /* GITHUB CONTRIBUTION WIDGET */
+    .github-wrapper {
+        padding: 16px;
+        margin-top: 30px;
+    }
+
+    .github-header h4 {
+        font-size: 14px;
+    }
+
+    /* PROJECTS */
+    .projects-section {
+        padding: 60px 20px 80px 20px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .section-description {
+        font-size: 14px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* FOOTER */
+    .footer-section {
+        padding: 40px 20px 20px 20px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-brand {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .footer-logo {
+        margin-bottom: 8px;
+    }
+
+    .footer-links {
+        gap: 30px;
+    }
+
+    .footer-col h4 {
+        margin-bottom: 16px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .legal-links {
+        justify-content: center;
+    }
+
+    /* WIDGETS (MUSIC, THEME, XRAY) */
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .music-widget {
+        width: 230px;
+        left: 20px;
+        bottom: 20px;
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    .music-disc-container {
+        width: 30px;
+        height: 30px;
+    }
+
+    .music-title {
+        font-size: 11px;
+    }
+
+    .music-artist {
+        font-size: 9px;
+    }
+
+    .music-control-btn {
+        width: 24px;
+        height: 24px;
+    }
+
+    .music-toggle-btn {
+        width: 44px;
+        height: 44px;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    #xray-trigger {
+        width: 44px;
+        height: 44px;
+        left: 20px;
+        bottom: 84px;
+    }
+
+    /* ACTIVITY & STATS SECTION */
+    .activity-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* PRELOADER */
+    .greeting-text {
+        font-size: 2.5rem !important;
+        gap: 8px !important;
+        letter-spacing: -1px !important;
+    }
+}

