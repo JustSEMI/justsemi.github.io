@@ -261,6 +261,8 @@ function fallbackTitle(path) {
     }
 }
 
+const songMetadataCache = {};
+
 function loadSong(index) {
     if (shuffledPlaylist.length === 0) return;
     const songPath = shuffledPlaylist[index];
@@ -275,6 +277,29 @@ function loadSong(index) {
             }
             bgAudio.removeEventListener('loadedmetadata', onLoaded);
         });
+    }
+
+    // Jika lagu sudah pernah diputar ada di cache
+    if (songMetadataCache[songPath]) {
+        const cached = songMetadataCache[songPath];
+        if (titleElement) titleElement.textContent = cached.title;
+        if (artistElement) {
+            if (cached.artist) {
+                artistElement.textContent = cached.artist;
+                artistElement.style.display = 'block';
+            } else {
+                artistElement.style.display = 'none';
+            }
+        }
+        if (coverElement) {
+            if (cached.coverSrc) {
+                coverElement.src = cached.coverSrc;
+                coverElement.style.display = 'block';
+            } else {
+                coverElement.style.display = 'none';
+            }
+        }
+        return; // Jangan parse ulang file audionya
     }
 
     if (titleElement) titleElement.textContent = "Loading...";
@@ -293,15 +318,22 @@ function loadSong(index) {
             window.jsmediatags.read(absoluteUrl, {
                 onSuccess: function (tag) {
                     const tags = tag.tags;
+                    const metadata = { title: '', artist: '', coverSrc: '' };
+
                     if (tags.title && titleElement) {
                         titleElement.textContent = tags.title;
+                        metadata.title = tags.title;
                     } else {
                         fallbackTitle(songPath);
+                        metadata.title = titleElement ? titleElement.textContent : '';
                     }
+
                     if (tags.artist && artistElement) {
                         artistElement.textContent = tags.artist;
                         artistElement.style.display = 'block';
+                        metadata.artist = tags.artist;
                     }
+
                     if (tags.picture && coverElement) {
                         const picture = tags.picture;
                         let base64String = "";
@@ -312,11 +344,16 @@ function loadSong(index) {
                         const base64Url = `data:${picture.format};base64,${btoa(base64String)}`;
                         coverElement.src = base64Url;
                         coverElement.style.display = 'block';
+                        metadata.coverSrc = base64Url;
                     }
+
+                    // Simpan ke cache agar next time tidak loading lagi
+                    songMetadataCache[songPath] = metadata; 
                 },
                 onError: function (error) {
                     console.log('Error reading tags:', error);
                     fallbackTitle(songPath);
+                    songMetadataCache[songPath] = { title: titleElement ? titleElement.textContent : '', artist: '', coverSrc: '' };
                 }
             });
         } else {
