@@ -1254,3 +1254,9 @@ body {
     color: var(--text-secondary);
     font-size: 14px;
 }
+
+@media (max-width: 768px) {
+    .avatar-visualizer {
+        display: none !important;
+    }
+}

@@ -433,11 +433,15 @@ function updateVisualizer() {
     analyser.getByteFrequencyData(dataArray);
 
     const style = typeof CONFIG !== 'undefined' && CONFIG.visualizerStyle ? CONFIG.visualizerStyle : 'bar';
-    const showCircle = style === 'circle' || style === 'both';
+    const isMobile = window.innerWidth <= 768; // Deteksi perangkat mobile
+    const showCircle = (style === 'circle' || style === 'both') && !isMobile;
     const showBar = style === 'bar' || style === 'both';
 
-    if (showCircle && canvasVisualizerCtx && avatarCanvas) {
+    if (canvasVisualizerCtx && avatarCanvas) {
         canvasVisualizerCtx.clearRect(0, 0, avatarCanvas.width, avatarCanvas.height);
+    }
+
+    if (showCircle && canvasVisualizerCtx && avatarCanvas) {
 
         const centerX = avatarCanvas.width / 2;
         const centerY = avatarCanvas.height / 2;
@@ -449,16 +453,16 @@ function updateVisualizer() {
         }
         const bassAvg = bassSum / 5;
         const pulseRadius = 72 + (bassAvg / 255) * 8; // Denyut dasar ring
-        
+
         const isSymmetric = typeof CONFIG !== 'undefined' && CONFIG.visualizerSymmetric !== undefined ? CONFIG.visualizerSymmetric : true;
-        
+
         let numBars = typeof CONFIG !== 'undefined' && CONFIG.visualizerBarsCount !== undefined ? CONFIG.visualizerBarsCount : 128;
         if (isSymmetric && numBars % 2 !== 0) numBars += 1; // WAJIB genap agar bisa dibagi 2 dengan pas
         if (numBars < 64) numBars = 128; // Resolusi tinggi agar garisnya mulus
-        
+
         const barWidth = (2 * Math.PI) / numBars;
         const limitBars = isSymmetric ? numBars / 2 : numBars;
-        
+
         // Fokus pada 50% frekuensi awal agar lebih rapi dan responsif ke irama
         const activeBins = Math.floor(dataArray.length * 0.5);
         const step = Math.max(1, Math.floor(activeBins / limitBars));
@@ -473,7 +477,7 @@ function updateVisualizer() {
 
         for (let i = 0; i <= numBars; i++) {
             const currentI = i === numBars ? 0 : i; // Tutup loop dengan mulus
-            
+
             // Logika pencerminan
             let dataIndex;
             if (isSymmetric) {
@@ -481,9 +485,9 @@ function updateVisualizer() {
             } else {
                 dataIndex = currentI;
             }
-            
+
             const value = dataArray[dataIndex * step] || 0;
-            
+
             // Rumus eksponensial
             let barHeight = Math.pow(value / 255, 1.8) * 30; // atau (value / 255) * 30 tapi noise
             //let barHeight = (value / 255) * 30
@@ -494,7 +498,7 @@ function updateVisualizer() {
 
             const angle = currentI * barWidth - Math.PI / 2;
             const finalRadius = pulseRadius + barHeight;
-            
+
             const x = centerX + Math.cos(angle) * finalRadius;
             const y = centerY + Math.sin(angle) * finalRadius;
 
@@ -504,9 +508,9 @@ function updateVisualizer() {
                 canvasVisualizerCtx.lineTo(x, y);
             }
         }
-        
+
         canvasVisualizerCtx.closePath();
-        canvasVisualizerCtx.stroke(); 
+        canvasVisualizerCtx.stroke();
         // Fill dihapus karena membuat efek putih berantakan di belakang avatar
     }
 
@@ -901,7 +905,7 @@ async function initViewCounter() {
 
         const now = Date.now();
         const lastVisit = localStorage.getItem('lastVisitTimestamp');
-        const cooldown = 60 * 60 * 1000; 
+        const cooldown = 60 * 60 * 1000;
 
         if (lastVisit && (now - parseInt(lastVisit)) < cooldown) {
             const lastCount = localStorage.getItem('lastCount');
@@ -914,7 +918,7 @@ async function initViewCounter() {
         localStorage.setItem('lastVisitTimestamp', now.toString());
         const response = await fetch(`https://api.counterapi.dev/v1/${namespace}/visits/up`);
         const data = await response.json();
-        
+
         if (viewCountElement && data.count) {
             viewCountElement.textContent = data.count.toLocaleString();
             localStorage.setItem('lastCount', data.count);
