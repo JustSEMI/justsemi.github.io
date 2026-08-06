@@ -2,7 +2,6 @@ const CONFIG = {
     // typewrite
     bioTexts: [
         "LAGI BELAJAR LUA dan LUAU",
-        "The gravity here seems highly unstable...",
         "POLIJE SIP",
         "DEV HORIZON HUB"
     ],
@@ -12,7 +11,7 @@ const CONFIG = {
 
     // tab title animation
     enableTabTitleAnimation: true,
-    tabTitleText: "@bluezex",
+    tabTitleText: "@oprexz",
     tabTitleTypingSpeed: 100,
     tabTitleDeletingSpeed: 50,
     tabTitlePauseDuration: 5000,
@@ -44,24 +43,29 @@ const CONFIG = {
     // playlist
     // Masukkan path lagu yang ada di folder assets/music/
     playlistStartTime: 0,
-    randomizePlaylist: false,
+    randomizePlaylist: true,
     visualizerStyle: 'both', // 'circle', 'bar', atau 'both'
     visualizerBarsCount: 16,
     visualizerSymmetric: true,
+    visualizerRotationSpeed: 0.000,
+    visualizerSpinAvatar: true,
+    audioFadeInDuration: 1000, // ms
+    audioFadeOutDuration: 1000, // ms
     playlist: [
-        'assets/music/BANG BANG BANG!.m4a',
+        'assets/music/Rie Takahashi - Stay Alive ～Regain～ 「TEGRA39 x ASUKA PROJECT Remix」.mp3',
+        // 'assets/music/Rie-Takahashi-Stay-Alive-Regain-TEGRA39-x-ASU.webm'
     ],
 
     // constellation
-    enableConstellation: true,
+    enableConstellation: false,
     constellationMinSize: 120, // min size %
     constellationMaxSize: 170, // max size %
 
     // shooting star
     enableStarfall: true,
-    starfallInterval: 1000,
+    starfallInterval: 500, 
     starfallChance: 1,
 
     // Zero Gravity Effect
-    zeroGravityChance: 0.5
+    zeroGravityChance: 0.1
 };

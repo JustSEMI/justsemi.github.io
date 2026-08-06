@@ -164,6 +164,14 @@ if (enterScreen && mainContent) {
         mainContent.style.pointerEvents = 'none'; // Allow events to pass through to background
         mainContent.classList.add('visible');
 
+        // Trigger scramble effect setelah user klik enter
+        hasEntered = true;
+        if (pendingUsername && lanyardUsername) {
+            scrambleText(lanyardUsername, pendingUsername, { frameDelay: 35, charsPerFrame: 1 });
+            lastScrambledUsername = pendingUsername;
+            pendingUsername = null;
+        }
+
         // Init Constellation after click
         if (typeof initConstellation === 'function') {
             initConstellation();
@@ -178,14 +186,15 @@ if (enterScreen && mainContent) {
 
         // Play background audio
         if (typeof bgAudio !== 'undefined') {
-            bgAudio.play().then(() => {
-                if (typeof initVisualizer === 'function') initVisualizer();
-                if (typeof audioCtx !== 'undefined' && audioCtx && audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
-                const playPauseBtn = document.getElementById('play-pause-btn');
-                if (playPauseBtn) playPauseBtn.innerHTML = '<i class="ph-fill ph-pause"></i>';
-            }).catch(e => console.log("Audio play failed:", e));
+            globalVolume = volumeSlider ? volumeSlider.value : 0.5;
+            playAudioWithFade();
+            
+            if (typeof initVisualizer === 'function') initVisualizer();
+            if (typeof audioCtx !== 'undefined' && audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            if (playPauseBtn) playPauseBtn.innerHTML = '<i class="ph-fill ph-pause"></i>';
         }
 
         // Start typewriter effect
@@ -254,10 +263,30 @@ const titleElement = document.getElementById('local-song-title');
 const artistElement = document.getElementById('local-song-artist');
 const coverElement = document.getElementById('local-song-cover');
 
+function checkTitleMarquee() {
+    const titleEl = document.getElementById('local-song-title');
+    if (!titleEl) return;
+    
+    titleEl.style.animation = 'none';
+    titleEl.style.transform = 'translateX(0)';
+    titleEl.classList.remove('marquee');
+    
+    setTimeout(() => {
+        if (titleEl.scrollWidth > titleEl.parentElement.clientWidth) {
+            const scrollDistance = (titleEl.scrollWidth - titleEl.parentElement.clientWidth) + 100; 
+            const duration = Math.max(scrollDistance * 80, 6000); 
+            titleEl.style.setProperty('--scroll-dist', `-${scrollDistance}px`);
+            titleEl.style.animation = `marquee-bounce ${duration}ms linear infinite alternate`;
+            titleEl.classList.add('marquee');
+        }
+    }, 100);
+}
+
 function fallbackTitle(path) {
     if (titleElement) {
         const fileName = path.split('/').pop().split('.mp3')[0];
         titleElement.textContent = fileName.replace(/[-_]/g, ' ');
+        checkTitleMarquee();
     }
 }
 
@@ -299,6 +328,7 @@ function loadSong(index) {
                 coverElement.style.display = 'none';
             }
         }
+        checkTitleMarquee();
         return; // Jangan parse ulang file audionya
     }
 
@@ -323,6 +353,7 @@ function loadSong(index) {
                     if (tags.title && titleElement) {
                         titleElement.textContent = tags.title;
                         metadata.title = tags.title;
+                        checkTitleMarquee();
                     } else {
                         fallbackTitle(songPath);
                         metadata.title = titleElement ? titleElement.textContent : '';
@@ -348,7 +379,7 @@ function loadSong(index) {
                     }
 
                     // Simpan ke cache agar next time tidak loading lagi
-                    songMetadataCache[songPath] = metadata; 
+                    songMetadataCache[songPath] = metadata;
                 },
                 onError: function (error) {
                     console.log('Error reading tags:', error);
@@ -367,23 +398,120 @@ function loadSong(index) {
 loadSong(currentSongIndex);
 
 bgAudio.addEventListener('ended', playNextSong);
+bgAudio.addEventListener('play', () => {
+    const spinAvatar = typeof CONFIG !== 'undefined' && CONFIG.visualizerSpinAvatar !== undefined ? CONFIG.visualizerSpinAvatar : true;
+    const spinWrapper = document.getElementById('avatar-spin-wrapper');
+    if (spinWrapper && spinAvatar) spinWrapper.classList.add('playing');
+});
+bgAudio.addEventListener('pause', () => {
+    const spinWrapper = document.getElementById('avatar-spin-wrapper');
+    if (spinWrapper) spinWrapper.classList.remove('playing');
+});
+
+let fadeInterval = null;
+let globalVolume = 0.5;
+
+function getFadeInDuration() {
+    return typeof CONFIG !== 'undefined' && CONFIG.audioFadeInDuration !== undefined ? CONFIG.audioFadeInDuration : 1500;
+}
+
+function getFadeOutDuration() {
+    return typeof CONFIG !== 'undefined' && CONFIG.audioFadeOutDuration !== undefined ? CONFIG.audioFadeOutDuration : 2000;
+}
+
+function playAudioWithFade() {
+    const fadeDuration = getFadeInDuration();
+    if (fadeDuration <= 0) {
+        bgAudio.volume = globalVolume;
+        bgAudio.play().catch(e => console.log(e));
+        return;
+    }
+    
+    bgAudio.volume = 0;
+    bgAudio.play().catch(e => console.log(e));
+    
+    clearInterval(fadeInterval);
+    const stepTime = 16;
+    const steps = Math.max(1, Math.floor(fadeDuration / stepTime));
+    let currentStep = 0;
+    
+    fadeInterval = setInterval(() => {
+        currentStep++;
+        // kurva Ease-Out
+        const progress = currentStep / steps;
+        const easeProgress = Math.sin(progress * (Math.PI / 2)); 
+        
+        let newVol = globalVolume * easeProgress;
+        if (newVol > globalVolume) newVol = globalVolume;
+        
+        bgAudio.volume = newVol;
+        
+        if (currentStep >= steps) {
+            clearInterval(fadeInterval);
+            bgAudio.volume = globalVolume;
+        }
+    }, stepTime);
+}
+
+function pauseAudioWithFade(callback) {
+    if (bgAudio.paused) {
+        if (callback) callback();
+        return;
+    }
+    
+    const fadeDuration = getFadeOutDuration();
+    if (fadeDuration <= 0) {
+        bgAudio.pause();
+        if (callback) callback();
+        return;
+    }
+    
+    clearInterval(fadeInterval);
+    const startVolume = bgAudio.volume;
+    const stepTime = 16;
+    const steps = Math.max(1, Math.floor(fadeDuration / stepTime));
+    let currentStep = 0;
+    
+    fadeInterval = setInterval(() => {
+        currentStep++;
+        // kurva Ease-In
+        const progress = currentStep / steps;
+        const easeProgress = Math.cos(progress * (Math.PI / 2));
+        
+        let newVol = startVolume * easeProgress;
+        if (newVol < 0) newVol = 0;
+        
+        bgAudio.volume = newVol;
+        
+        if (currentStep >= steps) {
+            clearInterval(fadeInterval);
+            bgAudio.pause();
+            bgAudio.volume = globalVolume; // reset
+            if (callback) callback();
+        }
+    }, stepTime);
+}
 
 function playNextSong() {
     if (shuffledPlaylist.length === 0) return;
-    currentSongIndex = (currentSongIndex + 1) % shuffledPlaylist.length;
-    loadSong(currentSongIndex);
-    bgAudio.play().catch(e => console.log(e));
-    const playPauseBtn = document.getElementById('play-pause-btn');
-    if (playPauseBtn) playPauseBtn.innerHTML = '<i class="ph-fill ph-pause"></i>';
+    pauseAudioWithFade(() => {
+        currentSongIndex = (currentSongIndex + 1) % shuffledPlaylist.length;
+        loadSong(currentSongIndex);
+        playAudioWithFade();
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        if (playPauseBtn) playPauseBtn.innerHTML = '<i class="ph-fill ph-pause"></i>';
+    });
 }
 
 function playPrevSong() {
     if (shuffledPlaylist.length === 0) return;
-    currentSongIndex = (currentSongIndex - 1 + shuffledPlaylist.length) % shuffledPlaylist.length;
-    loadSong(currentSongIndex);
-    bgAudio.play().catch(e => console.log(e));
-    const playPauseBtn = document.getElementById('play-pause-btn');
-    if (playPauseBtn) playPauseBtn.innerHTML = '<i class="ph-fill ph-pause"></i>';
+    pauseAudioWithFade(() => {
+        currentSongIndex = (currentSongIndex - 1 + shuffledPlaylist.length) % shuffledPlaylist.length;
+        loadSong(currentSongIndex);
+        playAudioWithFade();
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        if (playPauseBtn) playPauseBtn.innerHTML = '<i class="ph-fill ph-pause"></i>';
+    });
 }
 
 const playPauseBtn = document.getElementById('play-pause-btn');
@@ -393,10 +521,10 @@ const nextBtn = document.getElementById('next-btn');
 if (playPauseBtn) {
     playPauseBtn.addEventListener('click', () => {
         if (bgAudio.paused) {
-            bgAudio.play();
+            playAudioWithFade();
             playPauseBtn.innerHTML = '<i class="ph-fill ph-pause"></i>';
         } else {
-            bgAudio.pause();
+            pauseAudioWithFade();
             playPauseBtn.innerHTML = '<i class="ph-fill ph-play"></i>';
         }
     });
@@ -421,7 +549,8 @@ function initVisualizer() {
     source.connect(analyser);
     analyser.connect(audioCtx.destination);
 
-    analyser.fftSize = 256;
+    analyser.fftSize = 2048;
+    analyser.smoothingTimeConstant = .9;
     const bufferLength = analyser.frequencyBinCount;
     dataArray = new Uint8Array(bufferLength);
 
@@ -433,8 +562,8 @@ function initVisualizer() {
         avatarCanvas = document.getElementById('avatar-visualizer');
         if (avatarCanvas) {
             avatarCanvas.style.display = 'block';
-            avatarCanvas.width = 320;
-            avatarCanvas.height = 320;
+            avatarCanvas.width = 420;
+            avatarCanvas.height = 420;
             canvasVisualizerCtx = avatarCanvas.getContext('2d');
         }
     } else {
@@ -465,6 +594,8 @@ function initVisualizer() {
     requestAnimationFrame(updateVisualizer);
 }
 
+let visualizerRotation = 0; // Variabel penyimpan sudut putaran
+
 function updateVisualizer() {
     if (!audioCtx) return;
     analyser.getByteFrequencyData(dataArray);
@@ -473,6 +604,10 @@ function updateVisualizer() {
     const isMobile = window.innerWidth <= 768; // Deteksi perangkat mobile
     const showCircle = (style === 'circle' || style === 'both') && !isMobile;
     const showBar = style === 'bar' || style === 'both';
+
+    // Tambah putaran setiap frame
+    const rotSpeed = typeof CONFIG !== 'undefined' && CONFIG.visualizerRotationSpeed !== undefined ? CONFIG.visualizerRotationSpeed : 0.003;
+    visualizerRotation += rotSpeed;
 
     if (canvasVisualizerCtx && avatarCanvas) {
         canvasVisualizerCtx.clearRect(0, 0, avatarCanvas.width, avatarCanvas.height);
@@ -483,72 +618,80 @@ function updateVisualizer() {
         const centerX = avatarCanvas.width / 2;
         const centerY = avatarCanvas.height / 2;
 
-        // Bass pulse ambil rata-rata frekuensi terendah
         let bassSum = 0;
-        for (let i = 0; i < 5; i++) {
-            bassSum += dataArray[i];
+        // Dengan fftSize 2048, bin 1-10 persis mencakup frekuensi bass 20Hz - 210Hz
+        for (let i = 1; i <= 10; i++) {
+            bassSum += dataArray[i] || 0;
         }
-        const bassAvg = bassSum / 5;
-        const pulseRadius = 72 + (bassAvg / 255) * 8; // Denyut dasar ring
+        const bassAvg = bassSum / 10;
+        const bassRatio = bassAvg / 255;
+        const pulseRadius = 72 + Math.pow(bassRatio, 1.5) * 10;
 
         const isSymmetric = typeof CONFIG !== 'undefined' && CONFIG.visualizerSymmetric !== undefined ? CONFIG.visualizerSymmetric : true;
 
-        let numBars = typeof CONFIG !== 'undefined' && CONFIG.visualizerBarsCount !== undefined ? CONFIG.visualizerBarsCount : 128;
-        if (isSymmetric && numBars % 2 !== 0) numBars += 1; // WAJIB genap agar bisa dibagi 2 dengan pas
-        if (numBars < 64) numBars = 128; // Resolusi tinggi agar garisnya mulus
-
+        const numBars = 100;
         const barWidth = (2 * Math.PI) / numBars;
         const limitBars = isSymmetric ? numBars / 2 : numBars;
 
-        // Fokus pada 50% frekuensi awal agar lebih rapi dan responsif ke irama
-        const activeBins = Math.floor(dataArray.length * 0.5);
+        // Fokus pada 150 bin pertama sampai ~3.1kHz, agar bentuk gelombang rapi dan tidak acak
+        const activeBins = 150;
         const step = Math.max(1, Math.floor(activeBins / limitBars));
 
-        // Pengaturan gaya garis
-        canvasVisualizerCtx.shadowBlur = 15;
-        canvasVisualizerCtx.shadowColor = 'rgba(255, 255, 255, 0.6)';
-        canvasVisualizerCtx.lineWidth = 3.5;
+        // Pengaturan garis visual
+        canvasVisualizerCtx.shadowBlur = 10;
+        canvasVisualizerCtx.shadowColor = 'rgba(255, 255, 255, 0.7)';
+        canvasVisualizerCtx.lineWidth = 3;
         canvasVisualizerCtx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
         canvasVisualizerCtx.lineJoin = 'round';
         canvasVisualizerCtx.beginPath();
 
-        for (let i = 0; i <= numBars; i++) {
-            const currentI = i === numBars ? 0 : i; // Tutup loop dengan mulus
-
-            // Logika pencerminan
+        // Susun data frekuensi berdasarkan geometri lingkaran
+        let geometryValues = [];
+        for (let i = 0; i < numBars; i++) {
             let dataIndex;
             if (isSymmetric) {
-                dataIndex = currentI < limitBars ? currentI : numBars - 1 - currentI;
+                dataIndex = i < limitBars ? i : numBars - 1 - i;
             } else {
-                dataIndex = currentI;
+                dataIndex = i;
             }
+            geometryValues.push(dataArray[dataIndex * step] || 0);
+        }
 
-            const value = dataArray[dataIndex * step] || 0;
+        // Kalkulasi titik koordinat (X, Y)
+        let points = [];
+        for (let i = 0; i < numBars; i++) {
+            const prevVal = geometryValues[(i - 1 + numBars) % numBars];
+            const currVal = geometryValues[i];
+            const nextVal = geometryValues[(i + 1) % numBars];
 
-            // Rumus eksponensial
-            let barHeight = Math.pow(value / 255, 1.8) * 30; // atau (value / 255) * 30 tapi noise
-            //let barHeight = (value / 255) * 30
+            const smoothValue = (prevVal + currVal * 2 + nextVal) / 4;
+            const barHeight = Math.pow(smoothValue / 255, 1.4) * 40;
 
-            // if (dataIndex < limitBars * 0.2) {
-            //     barHeight *= 1.2; 
-            // }
-
-            const angle = currentI * barWidth - Math.PI / 2;
+            const angle = i * barWidth - Math.PI / 2 + visualizerRotation; // Ditambah efek rotasi muter
             const finalRadius = pulseRadius + barHeight;
 
-            const x = centerX + Math.cos(angle) * finalRadius;
-            const y = centerY + Math.sin(angle) * finalRadius;
-
-            if (i === 0) {
-                canvasVisualizerCtx.moveTo(x, y);
-            } else {
-                canvasVisualizerCtx.lineTo(x, y);
-            }
+            points.push({
+                x: centerX + Math.cos(angle) * finalRadius,
+                y: centerY + Math.sin(angle) * finalRadius
+            });
         }
+
+        // Gambar lingkaran menggunakan Kurva Bezier Kuadratik
+        let startX = (points[0].x + points[numBars - 1].x) / 2;
+        let startY = (points[0].y + points[numBars - 1].y) / 2;
+        canvasVisualizerCtx.moveTo(startX, startY);
+
+        for (let i = 0; i < numBars - 1; i++) {
+            let midX = (points[i].x + points[i + 1].x) / 2;
+            let midY = (points[i].y + points[i + 1].y) / 2;
+            canvasVisualizerCtx.quadraticCurveTo(points[i].x, points[i].y, midX, midY);
+        }
+
+        // Hubungkan kembali ke titik awal
+        canvasVisualizerCtx.quadraticCurveTo(points[numBars - 1].x, points[numBars - 1].y, startX, startY);
 
         canvasVisualizerCtx.closePath();
         canvasVisualizerCtx.stroke();
-        // Fill dihapus karena membuat efek putih berantakan di belakang avatar
     }
 
     if (showBar) {
@@ -596,9 +739,11 @@ function updateVolumeSliderUI(vol) {
 }
 
 if (volumeSlider) {
+    globalVolume = volumeSlider.value;
     updateVolumeSliderUI(volumeSlider.value);
     volumeSlider.addEventListener('input', (e) => {
         const vol = e.target.value;
+        globalVolume = vol;
         bgAudio.volume = vol;
         bgAudio.muted = false;
         updateMuteIcon(vol, bgAudio.muted);
@@ -646,7 +791,103 @@ if (lanyardAvatar && typeof CONFIG !== 'undefined' && CONFIG.fallbackAvatar) {
     lanyardAvatar.src = CONFIG.fallbackAvatar;
 }
 
+// LAST SEEN TRACKING
+const LAST_SEEN_KEY = 'lanyard_last_seen_' + DISCORD_USER_ID;
+let lastSeenInterval = null;
+
+function getLastSeenTimestamp() {
+    const stored = localStorage.getItem(LAST_SEEN_KEY);
+    return stored ? parseInt(stored, 10) : null;
+}
+
+function setLastSeenTimestamp(ts) {
+    try {
+        localStorage.setItem(LAST_SEEN_KEY, String(ts));
+    } catch (e) { }
+}
+
+function formatRelativeTime(timestamp) {
+    const diffMs = Date.now() - timestamp;
+    if (diffMs < 0) return 'baru saja';
+    const seconds = Math.floor(diffMs / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const weeks = Math.floor(days / 7);
+
+    if (seconds < 60) return 'baru saja';
+    if (minutes < 60) return `${minutes} menit lalu`;
+    if (hours < 24) return `${hours} jam lalu`;
+    if (days < 7) return `${days} hari lalu`;
+    if (weeks < 5) return `${weeks} minggu lalu`;
+    return new Date(timestamp).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function stopLastSeenInterval() {
+    if (lastSeenInterval) {
+        clearInterval(lastSeenInterval);
+        lastSeenInterval = null;
+    }
+}
+
+function startLastSeenInterval() {
+    stopLastSeenInterval();
+    lastSeenInterval = setInterval(() => {
+        const ts = getLastSeenTimestamp();
+        if (ts && lanyardActivity) {
+            lanyardActivity.textContent = `Terakhir terlihat ${formatRelativeTime(ts)}`;
+        }
+    }, 30000); // refresh tiap 30 detik biar teksnya nggak stale
+}
+
+// SCRAMBLE EFFECT
+const SCRAMBLE_CHARS = '!<>-_\\/[]{}—=+*^?#@%&';
+let lastScrambledUsername = null;
+let scrambleTimeout = null;
+let hasEntered = false; // true setelah user klik "CLICK TO ENTER"
+let pendingUsername = null;
+
+function scrambleText(element, targetText, options = {}) {
+    if (!element) return;
+    if (scrambleTimeout) clearTimeout(scrambleTimeout);
+
+    const charsPerFrame = options.charsPerFrame || 1;
+    const frameDelay = options.frameDelay || 30;
+
+    let iteration = 0;
+    element.classList.add('scrambling');
+
+    function frame() {
+        element.textContent = targetText.split('').map((char, idx) => {
+            if (char === ' ') return ' ';
+            if (idx < iteration / 3) return targetText[idx]; // char final
+            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+        }).join('');
+
+        iteration += charsPerFrame;
+
+        if (iteration >= targetText.length * 3) {
+            element.textContent = targetText; // fix ke teks final
+            element.classList.remove('scrambling');
+            scrambleTimeout = null;
+            return;
+        }
+        scrambleTimeout = setTimeout(frame, frameDelay);
+    }
+    frame();
+}
+
 function connectLanyard() {
+    // REST seed, ambil status awal cepat sebelum WS nyambung
+    fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`)
+        .then(res => res.json())
+        .then(json => {
+            if (json.success && json.data) {
+                updateDiscordCard(json.data);
+            }
+        })
+        .catch(() => { });
+
     const ws = new WebSocket('wss://api.lanyard.rest/socket');
     ws.onopen = () => {
         ws.send(JSON.stringify({
@@ -678,9 +919,17 @@ function updateDiscordCard(data) {
     }
 
     if (lanyardUsername) {
-        lanyardUsername.textContent = '@' + user.username;
-        if (user.discriminator && user.discriminator !== "0") {
-            lanyardUsername.textContent += `#${user.discriminator}`;
+        const fullUsername = '@' + user.username + (user.discriminator && user.discriminator !== "0" ? `#${user.discriminator}` : '');
+
+        // Hanya scramble saat username benar-benar berubah (anti-flicker dari heartbeat WS)
+        if (fullUsername !== lastScrambledUsername) {
+            if (!hasEntered) {
+                // User belum klik "CLICK TO ENTER" → simpan dulu, scramble nanti pas klik
+                pendingUsername = fullUsername;
+            } else {
+                scrambleText(lanyardUsername, fullUsername, { frameDelay: 35, charsPerFrame: 1 });
+                lastScrambledUsername = fullUsername;
+            }
         }
     }
 
@@ -740,6 +989,12 @@ function updateDiscordCard(data) {
     if (lanyardAvatar) {
         lanyardAvatar.className = 'avatar';
         lanyardAvatar.classList.add(data.discord_status);
+    }
+
+    // LAST SEEN: catat saat user terlihat online, tampilkan saat offline
+    if (data.discord_status !== 'offline') {
+        setLastSeenTimestamp(Date.now());
+        stopLastSeenInterval();
     }
 
     let activityText = data.discord_status === 'offline' ? "Offline" : "Online";
@@ -846,6 +1101,16 @@ function updateDiscordCard(data) {
 
         if (!isActivityShown && activityPlayer) {
             activityPlayer.style.display = 'none';
+        }
+    }
+
+    if (data.discord_status === 'offline') {
+        const lastSeen = getLastSeenTimestamp();
+        if (lastSeen) {
+            activityText = `Terakhir terlihat ${formatRelativeTime(lastSeen)}`;
+            startLastSeenInterval(); // biar teks relatifnya terus update
+        } else {
+            activityText = "Offline";
         }
     }
 

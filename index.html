@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@bluezex</title>
+    <title>@oprexz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -29,9 +29,11 @@
             <div class="profile-header-horizontal">
                 <div class="avatar-container">
                     <canvas id="avatar-visualizer" class="avatar-visualizer"></canvas>
-                    <img id="lanyard-avatar"
-                        src="https://cdn.discordapp.com/avatars/773408954352009216/865fc138a9e742a2f2d7e9b154144717.png"
-                        alt="Avatar" class="avatar">
+                    <div id="avatar-spin-wrapper" class="avatar-spin-wrapper">
+                        <img id="lanyard-avatar"
+                            src="https://cdn.discordapp.com/avatars/773408954352009216/865fc138a9e742a2f2d7e9b154144717.png"
+                            alt="Avatar" class="avatar">
+                    </div>
                     <div id="lanyard-status" class="status-indicator offline"></div>
                 </div>
 
@@ -57,7 +59,7 @@
             </div>
 
             <div id="activity-player" class="activity-player" data-tilt data-tilt-max="5" data-tilt-speed="400"
-                data-tilt-glare="true" data-tilt-max-glare="0.2" style="display: none;">
+                style="display: none;">
                 <div class="activity-header">
                     <i id="activity-icon" class="ph-fill ph-spotify-logo"></i>
                     <span id="activity-title">Listening to Spotify</span>
@@ -83,11 +85,10 @@
                 <!-- Injected via JS -->
             </div>
             <div class="view-counter-flat">
-                <i class="ph-fill ph-eye"></i> <span id="view-count">...</span> Views
+                <i class="ph-fill ph-eye"></i> <span id="view-count">-</span> Views
             </div>
 
-            <div class="local-player-flat" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true"
-                data-tilt-max-glare="0.1">
+            <div class="local-player-flat" data-tilt data-tilt-max="5" data-tilt-speed="400">
                 <div class="local-player-controls">
                     <button id="prev-btn" class="play-btn" title="Previous">
                         <i class="ph-fill ph-skip-back"></i>
@@ -101,12 +102,15 @@
                 </div>
                 <img id="local-song-cover" src="" alt="Cover" class="local-song-cover" style="display: none;">
                 <div class="local-player-info">
-                    <div id="local-song-title" class="local-song-title">Background Music</div>
+                    <div class="local-song-title-wrapper">
+                        <div id="local-song-title" class="local-song-title">Background Music</div>
+                    </div>
                     <div id="local-song-artist" class="local-song-artist" style="display: none;">Unknown Artist</div>
                     <div class="local-progress-container" id="local-progress-container">
                         <div class="local-progress-bar" id="local-progress-bar"></div>
                     </div>
-                    <div class="music-disclaimer" title="Music is for entertainment only. All rights belong to their respective owners.">
+                    <div class="music-disclaimer"
+                        title="Music is for entertainment only. All rights belong to their respective owners.">
                         © No copyright infringement intended.
                     </div>
                 </div>
@@ -120,8 +124,11 @@
             </div>
         </div>
         <div class="location-pin" id="location-pin-container" style="display: flex; gap: 15px; align-items: center;">
-            <div class="location-item" style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-map-pin"></i> <span>Indonesia, Java</span></div>
-            <div class="location-item timezone-item" id="timezone-widget" style="display: none; align-items: center; gap: 6px;"><i class="ph-fill ph-clock"></i> <span id="timezone-time">00:00:00</span></div>
+            <div class="location-item" style="display: flex; align-items: center; gap: 6px;"><i
+                    class="ph-fill ph-map-pin"></i> <span>Indonesia, Java</span></div>
+            <div class="location-item timezone-item" id="timezone-widget"
+                style="display: none; align-items: center; gap: 6px;"><i class="ph-fill ph-clock"></i> <span
+                    id="timezone-time">00:00:00</span></div>
         </div>
 
         <div class="volume-container">
@@ -136,8 +143,8 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
-    <script src="assets/config.js?v=0.0.2"></script>
-    <script src="script.js?v=0.0.3"></script>
+    <script src="assets/config.js?v=0.0.1"></script>
+    <script src="script.js?v=0.0.2"></script>
 </body>
 
 </html>
