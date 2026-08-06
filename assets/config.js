@@ -51,9 +51,9 @@ const CONFIG = {
     visualizerSpinAvatar: true,
     audioFadeInDuration: 1000, // ms
     audioFadeOutDuration: 1000, // ms
+    autoPauseAudioOnTabLeave: true,
     playlist: [
         'assets/music/Rie Takahashi - Stay Alive ～Regain～ 「TEGRA39 x ASUKA PROJECT Remix」.mp3',
-        // 'assets/music/Rie-Takahashi-Stay-Alive-Regain-TEGRA39-x-ASU.webm'
     ],
 
     // constellation

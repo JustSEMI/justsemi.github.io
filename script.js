@@ -1533,3 +1533,40 @@ function toggleZeroGravity() {
     }
 }
 
+// TAB VISIBILITY AUDIO CONTROL
+let wasPlayingBeforeHidden = false;
+
+document.addEventListener('visibilitychange', () => {
+    const autoPause = typeof CONFIG !== 'undefined' && CONFIG.autoPauseAudioOnTabLeave !== undefined ? CONFIG.autoPauseAudioOnTabLeave : true;
+    if (!autoPause) return;
+    
+    if (typeof bgAudio === 'undefined') return;
+    
+    if (document.hidden) {
+        // Tab is hidden
+        wasPlayingBeforeHidden = !bgAudio.paused;
+        if (wasPlayingBeforeHidden) {
+            if (typeof pauseAudioWithFade === 'function') {
+                pauseAudioWithFade(() => {
+                    const playPauseBtn = document.getElementById('play-pause-btn');
+                    if (playPauseBtn) playPauseBtn.innerHTML = '<i class="ph-fill ph-play"></i>';
+                });
+            } else {
+                bgAudio.pause();
+                const playPauseBtn = document.getElementById('play-pause-btn');
+                if (playPauseBtn) playPauseBtn.innerHTML = '<i class="ph-fill ph-play"></i>';
+            }
+        }
+    } else {
+        // Tab is visible again
+        if (wasPlayingBeforeHidden && typeof hasEntered !== 'undefined' && hasEntered) {
+            if (typeof playAudioWithFade === 'function') {
+                playAudioWithFade();
+            } else {
+                bgAudio.play().catch(e => console.log(e));
+            }
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            if (playPauseBtn) playPauseBtn.innerHTML = '<i class="ph-fill ph-pause"></i>';
+        }
+    }
+});
