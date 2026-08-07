@@ -67,5 +67,5 @@ const CONFIG = {
     starfallChance: 1,
 
     // Zero Gravity Effect
-    zeroGravityChance: 0.1
+    zeroGravityChance: 0.2
 };
